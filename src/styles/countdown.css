@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════════════
+ * GTA VI COUNTDOWN — Countdown Timer Styles
+ * ═══════════════════════════════════════════════════════
+ * Clean, borderless countdown display. Numbers are the
+ * hero — no boxes, no cards. Just glowing monospace
+ * digits with labels underneath.
+ * ═══════════════════════════════════════════════════════ */
+
+/* ─── Timer container ─── */
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.3rem, 1.5vw, 1.2rem);
+
+  /* Entrance animation (triggered by JS) */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 800ms var(--ease-out-expo) 200ms,
+              transform 800ms var(--ease-out-expo) 200ms;
+}
+
+.countdown--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Individual unit column ─── */
+.countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Pulse scales up briefly when the value changes */
+  transition: transform var(--transition-fast);
+}
+
+.countdown__unit--pulse {
+  transform: scale(1.06);
+}
+
+/* ─── The number itself ─── */
+.countdown__value {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 5.5vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+
+  /* Subtle glow matching the artwork palette */
+  text-shadow:
+    0 0 10px rgba(232, 70, 124, 0.35),
+    0 0 40px rgba(232, 70, 124, 0.12),
+    0 0 80px rgba(173, 111, 174, 0.08);
+
+  /* Positioned for glitch pseudo-elements */
+  position: relative;
+  display: inline-block;
+}
+
+/* ─── Unit label ─── */
+.countdown__label {
+  font-family: var(--font-display);
+  font-size: clamp(0.5rem, 1.2vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: clamp(0.15rem, 0.5vh, 0.4rem);
+}
+
+/* ─── Colon separator ─── */
+.countdown__separator {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  opacity: 0.5;
+  line-height: 1;
+  /* Align with numbers, not labels */
+  margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);
+  /* Pulsing blink */
+  animation: separator-pulse 2s ease-in-out infinite;
+}
+
+@keyframes separator-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 0.12; }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+ * GLITCH TEXT EFFECT
+ * Chromatic aberration via pseudo-element copies offset
+ * with clip-path slicing. Activated periodically by JS.
+ * ═══════════════════════════════════════════════════════ */
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: var(--glitch-color-2); /* Cyan offset */
+  text-shadow: none;
+}
+
+.glitch-text::after {
+  color: var(--glitch-color-1); /* Hot pink offset */
+  text-shadow: none;
+}
+
+/* Activated state — plays the glitch animation once */
+.glitch-text--active::before {
+  animation: glitch-text-top 400ms steps(2, end) forwards;
+}
+
+.glitch-text--active::after {
+  animation: glitch-text-bottom 400ms steps(3, end) forwards;
+}
+
+@keyframes glitch-text-top {
+  0%   { opacity: 0;   transform: translate(0, 0);      clip-path: inset(0 0 65% 0); }
+  20%  { opacity: 0.8; transform: translate(-4px, -2px); clip-path: inset(0 0 40% 0); }
+  40%  { opacity: 0;   transform: translate(3px, 1px);   clip-path: inset(30% 0 35% 0); }
+  60%  { opacity: 0.6; transform: translate(-2px, 0);    clip-path: inset(0 0 50% 0); }
+  80%  { opacity: 0.7; transform: translate(4px, -1px);  clip-path: inset(10% 0 55% 0); }
+  100% { opacity: 0;   transform: translate(0, 0);       clip-path: inset(0 0 100% 0); }
+}
+
+@keyframes glitch-text-bottom {
+  0%   { opacity: 0;   transform: translate(0, 0);      clip-path: inset(65% 0 0 0); }
+  25%  { opacity: 0.7; transform: translate(3px, 2px);   clip-path: inset(50% 0 0 0); }
+  50%  { opacity: 0;   transform: translate(-3px, -1px); clip-path: inset(40% 0 0 0); }
+  75%  { opacity: 0.8; transform: translate(2px, 0);     clip-path: inset(60% 0 0 0); }
+  100% { opacity: 0;   transform: translate(0, 0);       clip-path: inset(100% 0 0 0); }
+}

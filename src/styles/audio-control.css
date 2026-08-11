@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════════════
+ * GTA VI COUNTDOWN — Audio Control Pill
+ * ═══════════════════════════════════════════════════════
+ * Minimal floating pill at bottom-left. Mostly invisible
+ * until hovered or a track changes. Expands to show the
+ * current song title, then softly collapses back.
+ *
+ * States:
+ *   default   → icon only, very low opacity
+ *   hover     → slightly brighter
+ *   expanded  → pill widens to show track title
+ *   muted     → swaps speaker icon to muted variant
+ * ═══════════════════════════════════════════════════════ */
+
+.audio-pill {
+  position: fixed;
+  bottom: calc(var(--space-md) + var(--safe-bottom));
+  left: calc(var(--space-md) + var(--safe-left));
+  z-index: var(--z-content);
+
+  /* Pill shape */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 16px;
+
+  /* Subtle glass background matching the page theme */
+  background: rgba(45, 27, 61, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(173, 111, 174, 0.1);
+
+  /* Text and icon color */
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+
+  /* Reset button styles */
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Nearly invisible at rest */
+  opacity: 0.25;
+
+  /* Clipped to icon width when collapsed */
+  max-width: 36px;
+  overflow: hidden;
+
+  /* Smooth everything */
+  transition:
+    opacity 600ms var(--ease-out-expo),
+    max-width 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 400ms ease,
+    border-color 400ms ease;
+}
+
+/* Hover — become slightly more visible */
+.audio-pill:hover {
+  opacity: 0.55;
+  background: rgba(45, 27, 61, 0.6);
+  border-color: rgba(173, 111, 174, 0.2);
+}
+
+/* Expanded — show track title */
+.audio-pill--expanded {
+  max-width: 300px;
+  opacity: 0.5;
+}
+
+.audio-pill--expanded:hover {
+  opacity: 0.7;
+}
+
+
+/* ─── Icon ─── */
+.audio-pill__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+
+  /* Smooth icon swap */
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+/* Show/hide based on mute state */
+.audio-pill__icon--unmuted {
+  display: block;
+}
+
+.audio-pill__icon--muted {
+  display: none;
+}
+
+.audio-pill.audio-pill--muted .audio-pill__icon--unmuted {
+  display: none;
+}
+
+.audio-pill.audio-pill--muted .audio-pill__icon--muted {
+  display: block;
+}
+
+
+/* ─── Track title ─── */
+.audio-pill__track {
+  /* Fade in/out with the expand */
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 400ms ease 100ms,
+    transform 400ms var(--ease-out-expo) 100ms;
+
+  /* Prevent layout jump */
+  min-width: 0;
+
+  /* Ellipsis for very long titles */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-pill--expanded .audio-pill__track {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* ─── Focus ring for keyboard users ─── */
+.audio-pill:focus-visible {
+  opacity: 0.7;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
+/* ─── Hide on very short landscape ─── */
+@media (max-height: 380px) and (orientation: landscape) {
+  .audio-pill {
+    bottom: calc(0.3rem + var(--safe-bottom));
+    left: calc(0.3rem + var(--safe-left));
+    height: 26px;
+    padding: 0 7px;
+    border-radius: 13px;
+  }
+
+  .audio-pill__icon {
+    width: 13px;
+    height: 13px;
+  }
+}

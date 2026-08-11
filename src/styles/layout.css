@@ -1,0 +1,131 @@
+/* ═══════════════════════════════════════════════════════
+ * GTA VI COUNTDOWN — Layout & Components
+ * ═══════════════════════════════════════════════════════
+ * Single-viewport layout — everything fits on screen
+ * without scrolling. Uses dvh (dynamic viewport height)
+ * to account for mobile browser chrome.
+ * ═══════════════════════════════════════════════════════ */
+
+/* ─── App container ─── */
+.app {
+  position: relative;
+  z-index: var(--z-content);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vh, 1.5rem);
+
+  /* Lock to viewport — no scroll */
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+
+  /* Safe area padding for notches and cutouts */
+  padding: calc(var(--space-md) + var(--safe-top))
+           calc(var(--space-md) + var(--safe-right))
+           calc(var(--space-sm) + var(--safe-bottom))
+           calc(var(--space-md) + var(--safe-left));
+}
+
+
+/* ═══════════════════════════════════════════
+ * LOGO
+ * ═══════════════════════════════════════════ */
+
+.app__header {
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(-15px) scale(0.96);
+  transition: opacity 1s var(--ease-out-expo),
+              transform 1s var(--ease-out-back);
+}
+
+.app__header--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.app__logo {
+  /*
+   * Sized relative to viewport so it scales with the screen.
+   * min() prevents it from overflowing on any axis.
+   */
+  width: min(34vw, 32vh, 360px);
+  height: auto;
+
+  filter: drop-shadow(0 0 25px rgba(232, 70, 124, 0.25))
+          drop-shadow(0 0 50px rgba(173, 111, 174, 0.12));
+
+  /* Gentle floating animation */
+  animation: logo-float 6s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+
+/* ═══════════════════════════════════════════
+ * RELEASE INFO
+ * ═══════════════════════════════════════════ */
+
+.release-info {
+  text-align: center;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 800ms var(--ease-out-expo) 400ms,
+              transform 800ms var(--ease-out-expo) 400ms;
+}
+
+.release-info--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.release-info__date {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+
+  /* Gradient text pulled from the artwork sunset */
+  background: linear-gradient(
+    135deg,
+    var(--color-peach) 0%,
+    var(--color-sunset-orange) 50%,
+    var(--color-hot-pink) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.release-info__note {
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+  font-weight: 300;
+}
+
+
+/* ═══════════════════════════════════════════
+ * FOOTER
+ * ═══════════════════════════════════════════ */
+
+.app__footer {
+  margin-top: auto;
+}
+
+.app__disclaimer {
+  font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+  color: var(--color-text-muted);
+  opacity: 0.4;
+  text-align: center;
+  max-width: 320px;
+  line-height: 1.5;
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ═══════════════════════════════════════════
+       CHARACTER ENCODING & VIEWPORT
+       ═══════════════════════════════════════════ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO & SOCIAL META
+       ═══════════════════════════════════════════ -->
+  <title>GTA VI Countdown — November 19, 2026</title>
+  <meta name="description"
+        content="The official fan countdown to Grand Theft Auto VI. Releasing November 19, 2026. Every second counts." />
+  <meta name="keywords" content="GTA VI, GTA 6, Grand Theft Auto, countdown, release date, Rockstar Games" />
+  <meta name="author" content="GTA VI Countdown" />
+  <meta name="theme-color" content="#2D1B3D" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GTA VI Countdown — November 19, 2026" />
+  <meta property="og:description" content="Every second counts. The countdown to the biggest game launch in history." />
+  <meta property="og:image" content="/icons/icon-512x512.png" />
+  <meta property="og:url" content="/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GTA VI Countdown" />
+  <meta name="twitter:description" content="Every second counts. November 19, 2026." />
+  <meta name="twitter:image" content="/icons/icon-512x512.png" />
+
+  <!-- ═══════════════════════════════════════════
+       FAVICONS & APPLE TOUCH ICONS
+       ═══════════════════════════════════════════ -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/icons/apple-touch-icon-precomposed.png" />
+
+  <!-- ═══════════════════════════════════════════
+       iOS PWA META
+       ═══════════════════════════════════════════ -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GTA VI" />
+
+  <!-- iOS splash screens -->
+  <link rel="apple-touch-startup-image" href="/splash/splash-750x1334.png"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1125x2436.png"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-828x1792.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1242x2688.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1170x2532.png"
+        media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1284x2778.png"
+        media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1179x2556.png"
+        media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1290x2796.png"
+        media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1536x2048.png"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-1668x2388.png"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="/splash/splash-2048x2732.png"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+
+  <!-- ═══════════════════════════════════════════
+       MICROSOFT TILE
+       ═══════════════════════════════════════════ -->
+  <meta name="msapplication-TileColor" content="#2D1B3D" />
+  <meta name="msapplication-TileImage" content="/icons/mstile-150x150.png" />
+
+  <!-- ═══════════════════════════════════════════
+       WEB APP MANIFEST
+       ═══════════════════════════════════════════ -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- ═══════════════════════════════════════════
+       FONTS
+       ═══════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" />
+
+  <!-- ═══════════════════════════════════════════
+       PRELOAD CRITICAL ASSETS
+       ═══════════════════════════════════════════ -->
+  <link rel="preload" href="/artwork.jpg" as="image" type="image/jpeg" />
+  <link rel="preload" href="/logo.png" as="image" type="image/png" />
+
+  <!-- Application CSS -->
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════
+       LOADING SCREEN
+       Shows the GTA VI logo with a pulse glow
+       while we preload the artwork and fonts.
+       Fades out only when everything is ready.
+       ═══════════════════════════════════════════ -->
+  <div id="loader" class="loader" aria-label="Loading">
+    <img src="/logo.png"
+         alt="Grand Theft Auto VI"
+         class="loader__logo"
+         width="280"
+         height="310"
+         draggable="false" />
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       BACKGROUND LAYER
+       Full-viewport artwork with glitch overlays,
+       gradient for readability, and CRT scanlines.
+       ═══════════════════════════════════════════ -->
+  <div id="background" class="background" aria-hidden="true">
+    <div class="background__image" id="bg-image"></div>
+    <div class="background__glitch" id="bg-glitch"></div>
+    <div class="background__overlay"></div>
+    <div class="background__scanlines"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN CONTENT
+       Locked to viewport height — no scrolling.
+       ═══════════════════════════════════════════ -->
+  <main id="app" class="app">
+
+    <!-- Logo -->
+    <header class="app__header">
+      <img src="/logo.png"
+           alt="Grand Theft Auto VI Logo"
+           class="app__logo"
+           id="logo"
+           width="320"
+           height="354"
+           loading="eager"
+           draggable="false" />
+    </header>
+
+    <!-- Countdown Timer -->
+    <section class="countdown" id="countdown" aria-label="Countdown to GTA VI release">
+      <div class="countdown__unit" id="unit-months">
+        <span class="countdown__value glitch-text" data-unit="months">--</span>
+        <span class="countdown__label">Months</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-days">
+        <span class="countdown__value glitch-text" data-unit="days">--</span>
+        <span class="countdown__label">Days</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-hours">
+        <span class="countdown__value glitch-text" data-unit="hours">--</span>
+        <span class="countdown__label">Hours</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-minutes">
+        <span class="countdown__value glitch-text" data-unit="minutes">--</span>
+        <span class="countdown__label">Minutes</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-seconds">
+        <span class="countdown__value glitch-text" data-unit="seconds">--</span>
+        <span class="countdown__label">Seconds</span>
+      </div>
+    </section>
+
+    <!-- Release Info -->
+    <section class="release-info" id="release-info">
+      <p class="release-info__date">November 19, 2026</p>
+      <p class="release-info__note">Midnight local time · PS5 & Xbox Series X|S</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app__footer">
+      <p class="app__disclaimer">
+        Fan-made countdown. Not affiliated with Rockstar Games or Take-Two Interactive.
+      </p>
+    </footer>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       AUDIO CONTROL
+       Fixed bottom-left pill that expands to show
+       the current track, then collapses back.
+       ═══════════════════════════════════════════ -->
+  <button class="audio-pill" id="audio-pill" aria-label="Toggle audio" type="button">
+    <!-- Unmuted icon (speaker with waves) -->
+    <svg class="audio-pill__icon audio-pill__icon--unmuted" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path d="M19.07 4.93a10 10 0 010 14.14"/>
+      <path d="M15.54 8.46a5 5 0 010 7.07"/>
+    </svg>
+    <!-- Muted icon (speaker with X) -->
+    <svg class="audio-pill__icon audio-pill__icon--muted" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+    <span class="audio-pill__track" id="audio-track"></span>
+  </button>
+
+  <!-- Application Entry Point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

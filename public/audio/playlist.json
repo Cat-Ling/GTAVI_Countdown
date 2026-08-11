@@ -1,0 +1,73 @@
+{
+  "playlist": [
+    {
+      "title": "Vice City I",
+      "file": "/audio/aac/Vice_City_1.m4a",
+      "duration": 174.976
+    },
+    {
+      "title": "Miami Pulse",
+      "file": "/audio/aac/Miami Pulse.m4a",
+      "duration": 173.664
+    },
+    {
+      "title": "Chrome Vector",
+      "file": "/audio/aac/Chrome Vector.m4a",
+      "duration": 166.293
+    },
+    {
+      "title": "Gulf Breeze",
+      "file": "/audio/aac/Gulf Breeze.m4a",
+      "duration": 179.029
+    },
+    {
+      "title": "Analog Horizon",
+      "file": "/audio/aac/Analog Horizon.m4a",
+      "duration": 175.04
+    },
+    {
+      "title": "Dark Vista",
+      "file": "/audio/aac/Dark Vista.m4a",
+      "duration": 165.792
+    },
+    {
+      "title": "Palm Coast",
+      "file": "/audio/aac/Palm Coast.m4a",
+      "duration": 181.312
+    },
+    {
+      "title": "Undercover",
+      "file": "/audio/aac/Undercover.m4a",
+      "duration": 171.701
+    },
+    {
+      "title": "Vice City II",
+      "file": "/audio/aac/Vice_City_2.m4a",
+      "duration": 176.853
+    },
+    {
+      "title": "Deep Resonance",
+      "file": "/audio/aac/Deep Resonance.m4a",
+      "duration": 168.224
+    },
+    {
+      "title": "Distant Horizon",
+      "file": "/audio/aac/Distant Horizon.m4a",
+      "duration": 154.24
+    },
+    {
+      "title": "Zero Hour",
+      "file": "/audio/aac/Zero Hour.m4a",
+      "duration": 176.757
+    }
+  ],
+  "countdown": {
+    "tick": "/audio/countdown/tick.m4a",
+    "tock": "/audio/countdown/tock.m4a"
+  },
+  "finalCountdown": {
+    "title": "Ocean Pulse",
+    "file": "/audio/final_minutes/Ocean Pulse.m4a",
+    "duration": 176.202
+  }
+}

@@ -1,0 +1,24 @@
+/* ═══════════════════════════════════════════════════════
+ * GTA VI COUNTDOWN — Main Stylesheet
+ * ═══════════════════════════════════════════════════════
+ * This file imports all partials in the correct order.
+ * Cascade order matters:
+ *   1. Tokens (CSS custom properties)
+ *   2. Reset (normalize browser defaults)
+ *   3. Component styles (background, loader, timer, layout)
+ *   4. Responsive overrides (last to win specificity ties)
+ * ═══════════════════════════════════════════════════════ */
+
+/* ─── Foundation ─── */
+@import './tokens.css';
+@import './reset.css';
+
+/* ─── Components ─── */
+@import './background.css';
+@import './loader.css';
+@import './countdown.css';
+@import './layout.css';
+@import './audio-control.css';
+
+/* ─── Responsive overrides ─── */
+@import './responsive.css';

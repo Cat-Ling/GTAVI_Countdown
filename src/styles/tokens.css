@@ -1,0 +1,79 @@
+/* ═══════════════════════════════════════════════════════
+ * GTA VI COUNTDOWN — Design Tokens
+ * ═══════════════════════════════════════════════════════
+ * Color palette extracted from the official GTA VI artwork:
+ *   - Deep plum/indigo from palm tree silhouettes
+ *   - Hot magenta/pink from Lucia's top
+ *   - Sunset orange and peach from the sky gradient
+ *   - Dusty lavender and orchid from building reflections
+ *   - Slate blue-grey from the Art Deco architecture
+ *
+ * Every color here maps to a specific region of the artwork
+ * to ensure visual harmony between the countdown UI and
+ * the background image.
+ * ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Artwork-derived palette ─── */
+  --color-deep-plum:      #2D1B3D;   /* Darkened from #4F3A4F for contrast */
+  --color-indigo:         #542560;   /* Logo border / deep purple */
+  --color-orchid:         #AD6FAE;   /* Mid-tone purple, buildings */
+  --color-hot-pink:       #E8467C;   /* Brightened from #A4326E for UI pop */
+  --color-magenta:        #A4326E;   /* Lucia's top, raw from artwork */
+  --color-rose-mauve:     #AC6298;   /* Logo fill, muted pink-purple */
+  --color-sunset-orange:  #DDA077;   /* Warm sky gradient */
+  --color-peach:          #F7C9A8;   /* Lightest sky tone */
+  --color-blush:          #E0A1A0;   /* Warm highlight */
+  --color-lavender:       #AB98CB;   /* Soft purple, sky/buildings */
+  --color-slate:          #7B869C;   /* Cool grey-blue, buildings */
+  --color-dusty-mauve:    #9D6C99;   /* Transitional purple */
+
+  /* ─── Semantic colors ─── */
+  --color-bg:             var(--color-deep-plum);
+  --color-text:           #F2E8F7;   /* Warm off-white with purple tint */
+  --color-text-muted:     #9B8AAD;   /* Desaturated lavender */
+  --color-accent:         var(--color-hot-pink);
+  --color-accent-glow:    rgba(232, 70, 124, 0.6);
+
+  /* ─── Glitch effect colors (RGB offsets) ─── */
+  --glitch-color-1:       var(--color-hot-pink);
+  --glitch-color-2:       #00D4FF;   /* Cyan complement for chromatic aberration */
+  --glitch-color-3:       var(--color-sunset-orange);
+
+  /* ─── Typography ─── */
+  --font-display:         'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono:            'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* ─── Spacing scale (8px base) ─── */
+  --space-xs:  0.25rem;  /*  4px */
+  --space-sm:  0.5rem;   /*  8px */
+  --space-md:  1rem;     /* 16px */
+  --space-lg:  1.5rem;   /* 24px */
+  --space-xl:  2rem;     /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+
+  /* ─── Border radius ─── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* ─── Transitions ─── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 150ms var(--ease-out-expo);
+  --transition-normal: 300ms var(--ease-out-expo);
+  --transition-slow: 600ms var(--ease-out-expo);
+
+  /* ─── Z-index layers ─── */
+  --z-background:   -1;
+  --z-content:       1;
+  --z-overlay:      10;
+  --z-loader:      100;
+
+  /* ─── Safe area insets (iOS notch, Android cutout) ─── */
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+}

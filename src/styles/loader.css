@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════════════════
+ * GTA VI COUNTDOWN — Loading Screen
+ * ═══════════════════════════════════════════════════════
+ * Full-screen loader with the GTA VI logo centered on
+ * the deep plum background. A soft radial glow pulses
+ * outward from behind the logo, creating a breathing
+ * ambient light effect.
+ * ═══════════════════════════════════════════════════════ */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-deep-plum);
+
+  /* Smooth fade-out when dismissed */
+  transition: opacity 800ms var(--ease-out-expo),
+              visibility 800ms var(--ease-out-expo);
+}
+
+.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ─── Radial glow behind the logo ─── */
+.loader::before {
+  content: '';
+  position: absolute;
+  width: 120vmax;
+  height: 120vmax;
+  border-radius: 50%;
+
+  /*
+   * Soft radial gradient from warm accent tones
+   * to the base background color. The colors are
+   * pulled from the artwork palette.
+   */
+  background: radial-gradient(
+    circle,
+    rgba(164, 50, 110, 0.18) 0%,
+    rgba(173, 111, 174, 0.10) 25%,
+    rgba(84, 37, 96, 0.06) 45%,
+    transparent 65%
+  );
+
+  /* Breathing pulse — scale and opacity cycle */
+  animation: loader-glow 3s ease-in-out infinite;
+}
+
+@keyframes loader-glow {
+  0%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ─── Logo ─── */
+.loader__logo {
+  position: relative; /* Above the glow pseudo-element */
+  width: clamp(180px, 35vmin, 300px);
+  height: auto;
+
+  /* Drop shadow adds depth against the glow */
+  filter: drop-shadow(0 0 20px rgba(232, 70, 124, 0.3))
+          drop-shadow(0 0 50px rgba(173, 111, 174, 0.15));
+
+  /* Gentle scale pulse synced loosely with the glow */
+  animation: loader-logo-breathe 3s ease-in-out infinite;
+}
+
+@keyframes loader-logo-breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
