@@ -44,8 +44,27 @@
 }
 
 .is-released .background__image {
-  /* Remove the dark overlay to make it incredibly vibrant post-release! */
-  filter: brightness(1) saturate(1.1);
+  /* Default Mobile Portrait */
+  background-image: url('/posters/poster-portrait.jpg');
+  filter: brightness(0.85) saturate(1.1); /* Vibrant but still readable */
+}
+
+@media (min-width: 768px) {
+  .is-released .background__image {
+    background-image: url('/posters/poster-square.jpg');
+  }
+}
+
+@media (min-width: 1200px) {
+  .is-released .background__image {
+    background-image: url('/posters/poster-16x9.jpg');
+  }
+}
+
+@media (min-width: 2000px), (min-aspect-ratio: 21/9) {
+  .is-released .background__image {
+    background-image: url('/posters/poster-ultrawide.jpg');
+  }
 }
 
 /* ─── Glitch overlay container ─── */

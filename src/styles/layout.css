@@ -168,26 +168,25 @@
  * POST-RELEASE CINEMATICS
  * ═══════════════════════════════════════════ */
 
-/* The Bloom Flash */
-.flash-overlay {
+/* The Blackout Transition */
+.blackout-overlay {
   position: fixed;
   inset: 0;
-  background: white;
+  background: black;
   z-index: 9999;
   opacity: 0;
   pointer-events: none;
-  mix-blend-mode: screen;
   transition: opacity 0s; /* Instant by default */
 }
 
-.flash-overlay.is-flashing {
-  opacity: 0.9;
-  transition: opacity 0.1s ease-out; /* Fast flash in */
+.blackout-overlay.is-blackout {
+  opacity: 1;
+  transition: opacity 3s ease-in; /* Slow dramatic fade to black */
 }
 
-.flash-overlay.is-fading {
+.blackout-overlay.is-fading {
   opacity: 0;
-  transition: opacity 3s ease-in; /* Slow dramatic fade out */
+  transition: opacity 4s ease-in-out; /* Slow fade to reveal */
 }
 
 /* Available Now Message */
@@ -209,21 +208,24 @@
 }
 
 .released-message__title {
-  font-family: var(--font-primary);
-  font-size: clamp(2rem, 5vw, 6rem);
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.2em;
-  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
-               0 0 40px rgba(232, 70, 124, 0.5);
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8),
+               0 0 40px rgba(232, 70, 124, 0.4);
 }
 
 .released-message__subtitle {
-  font-family: var(--font-mono);
-  font-size: clamp(1rem, 1.5vw, 2.5rem);
-  color: var(--color-accent);
-  opacity: 0.8;
-  letter-spacing: 0.1em;
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }

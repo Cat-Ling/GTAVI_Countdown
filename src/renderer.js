@@ -143,20 +143,20 @@ export function getGlitchTextElements() {
  * @param {boolean} instant - If true, skips the flashbang (used for subsequent visits after release)
  */
 export function triggerReleaseCinematic(instant = false) {
-  const flash = document.getElementById('flash-overlay');
+  const blackout = document.getElementById('blackout-overlay');
   
   /* Instantly drop the final 30 mode and apply the released mode to hide everything else */
   document.body.classList.remove('is-final-30');
   document.body.classList.add('is-released');
   
-  if (!flash || instant) return;
+  if (!blackout || instant) return;
   
-  /* Trigger the flash in */
-  flash.classList.add('is-flashing');
+  /* Trigger the blackout fade to black */
+  blackout.classList.add('is-blackout');
   
-  /* After a brief moment, start fading it out */
+  /* After a few seconds, start fading it out to reveal the posters */
   setTimeout(() => {
-    flash.classList.remove('is-flashing');
-    flash.classList.add('is-fading');
-  }, 1000);
+    blackout.classList.remove('is-blackout');
+    blackout.classList.add('is-fading');
+  }, 2000);
 }
