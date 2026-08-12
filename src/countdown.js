@@ -41,6 +41,17 @@ export function setTimezone(mode) {
 // Initialize
 setTimezone('UK');
 
+export function checkReleaseStates() {
+  const now = new Date();
+  const ukRelease = new Date(Date.UTC(RELEASE_YEAR, RELEASE_MONTH, RELEASE_DAY, 0, 0, 0));
+  const localRelease = new Date(RELEASE_YEAR, RELEASE_MONTH, RELEASE_DAY, 0, 0, 0);
+
+  return {
+    isUKReleased: (ukRelease.getTime() - now.getTime()) <= 0,
+    isLocalReleased: (localRelease.getTime() - now.getTime()) <= 0
+  };
+}
+
 /**
  * Calculates the full time remaining until release.
  *

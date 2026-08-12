@@ -30,7 +30,7 @@ import '@fontsource/outfit/900.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/700.css';
 
-import { getTimeRemaining, setTimezone, currentTargetMode } from './countdown.js';
+import { getTimeRemaining, setTimezone, currentTargetMode, checkReleaseStates } from './countdown.js';
 import {
   initGlitch,
   createGlitchLayers,
@@ -138,6 +138,7 @@ function tickLoop() {
      because once it hits 00:00:00:00, the second string never changes again! */
   if (time.released) {
     console.log('[App] GTA VI has been released! 🎮');
+    checkFallback();
     triggerReleaseCinematic();
     return; /* Stop the loop */
   }
@@ -257,6 +258,7 @@ async function init() {
   const initialTime = getTimeRemaining();
   if (initialTime.released) {
     console.log('[App] GTA VI is already released! 🎮');
+    checkFallback();
     triggerReleaseCinematic(true);
   } else {
     /* Start the requestAnimationFrame tick loop */
@@ -384,6 +386,24 @@ function setupTimezoneToggle() {
     // Force a display update immediately
     syncOnly();
   });
+
+  const releasedBtn = document.getElementById('released-timezone-btn');
+  if (releasedBtn) {
+    releasedBtn.addEventListener('click', () => {
+      localStorage.setItem('gtavi_timezone_mode', 'local');
+      window.location.reload();
+    });
+  }
+}
+
+function checkFallback() {
+  const states = checkReleaseStates();
+  const fallback = document.getElementById('released-local-fallback');
+  if (fallback && states.isUKReleased && !states.isLocalReleased && currentTargetMode === 'UK') {
+    fallback.removeAttribute('aria-hidden');
+  } else if (fallback) {
+    fallback.setAttribute('aria-hidden', 'true');
+  }
 }
 
 /* ─── Boot ─── */
