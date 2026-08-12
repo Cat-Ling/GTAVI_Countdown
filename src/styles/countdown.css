@@ -100,6 +100,7 @@
 /* ─── The number itself ─── */
 .countdown__value {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: clamp(1.8rem, 6vw, 12rem);
   font-weight: 700;
   line-height: 1;
@@ -131,6 +132,7 @@
 /* ─── Colon separator ─── */
 .countdown__separator {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: clamp(1.2rem, 4.5vw, 9rem);
   font-weight: 700;
   color: var(--color-accent);
