@@ -279,7 +279,7 @@ export function resetTickPhase() {
  * ═══════════════════════════════════════════ */
 
 export function checkFinalCountdown(totalRemainingMs) {
-  if (isFinalMode || !isUnlocked || !finalBuffer || !audioCtx) return;
+  if (isFinalMode || !isUnlocked || !finalBuffer || !audioCtx || totalRemainingMs <= 0) return;
 
   const remainingSec = totalRemainingMs / 1000;
   if (remainingSec > finalTrack.duration) return;

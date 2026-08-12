@@ -188,10 +188,15 @@ function setupVisibilityHandler() {
     if (document.hidden) {
       cancelTick();
     } else {
-      /* User returned — sync silently then resume ticking */
+      /* User returned — sync silently */
       syncOnly();
-      resetTickPhase();
-      startTick();
+      
+      const time = getTimeRemaining();
+      if (!time.released) {
+        /* Only resume the tick loop if we are still counting down */
+        resetTickPhase();
+        startTick();
+      }
     }
   });
 }
