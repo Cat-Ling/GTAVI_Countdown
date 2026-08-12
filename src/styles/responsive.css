@@ -171,7 +171,7 @@
  * LANDSCAPE — SHORT VIEWPORTS (under 500px tall)
  * Horizontal row layout, everything compressed.
  * ═══════════════════════════════════════════ */
-@media (max-height: 500px) and (orientation: landscape) {
+@media (max-width: 1000px) and (max-height: 500px) and (orientation: landscape) {
   .app {
     gap: clamp(0.2rem, 1vh, 0.5rem);
     padding: calc(0.5rem + var(--safe-top))
@@ -219,7 +219,7 @@
 /* ═══════════════════════════════════════════
  * EXTREMELY SHORT LANDSCAPE (under 380px tall)
  * ═══════════════════════════════════════════ */
-@media (max-height: 380px) and (orientation: landscape) {
+@media (max-width: 1000px) and (max-height: 380px) and (orientation: landscape) {
   .app__logo {
     width: min(12vh, 14vw, 80px);
   }
@@ -244,23 +244,23 @@
  * ═══════════════════════════════════════════ */
 @media (min-width: 600px) and (min-height: 700px) {
   .app {
-    gap: clamp(1rem, 3vh, 2rem);
+    gap: clamp(1rem, 3vh, 4rem);
   }
 
   .countdown {
-    gap: clamp(0.5rem, 2vw, 1.5rem);
+    gap: clamp(0.5rem, 2vw, 3rem);
   }
 
   .countdown__value {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 6vw, 12rem);
   }
 
   .countdown__label {
-    font-size: clamp(0.55rem, 1vw, 0.7rem);
+    font-size: clamp(0.55rem, 1vw, 1.5rem);
   }
 
   .countdown__separator {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4.5vw, 9rem);
   }
 }
 
@@ -270,23 +270,23 @@
  * ═══════════════════════════════════════════ */
 @media (min-width: 1024px) and (min-height: 600px) {
   .app {
-    gap: clamp(1rem, 3vh, 2.5rem);
+    gap: clamp(1rem, 3vh, 4rem);
   }
 
   .countdown {
-    gap: clamp(0.8rem, 1.5vw, 2rem);
+    gap: clamp(0.8rem, 1.5vw, 3rem);
   }
 
   .countdown__value {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(3rem, 6vw, 12rem);
   }
 
   .countdown__separator {
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(2.5rem, 4.5vw, 9rem);
   }
 
   .app__logo {
-    width: min(30vw, 34vh, 380px);
+    width: min(30vw, 34vh, 600px);
   }
 }
 
