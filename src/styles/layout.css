@@ -171,14 +171,14 @@
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 0.5s ease 1.5s, visibility 0s 2s; /* Fades in slowly after the main message */
+  transition: opacity 0.5s ease 1.5s; /* Fades in slowly after the main message */
 }
 
 .released-local-fallback:not([aria-hidden="true"]) {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
-  transition: opacity 0.5s ease 1.5s, visibility 0s 1.5s;
+  transition: opacity 0.5s ease 1.5s;
 }
 
 .released-local-fallback p {
