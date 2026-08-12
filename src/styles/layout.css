@@ -78,7 +78,7 @@
   text-align: center;
   
   /* Create visual separation from the timer block above it */
-  margin-top: clamp(1rem, 10vh, 8rem);
+  margin-top: clamp(1rem, 4vh, 8rem);
 
   /* Entrance animation */
   opacity: 0;
@@ -94,7 +94,7 @@
 
 .release-info__date {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2.5vw, 2.5rem);
+  font-size: clamp(0.9rem, 1.2vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.04em;
 
@@ -111,7 +111,7 @@
 }
 
 .release-info__note {
-  font-size: clamp(0.6rem, 1.2vw, 1.5rem);
+  font-size: clamp(0.6rem, 0.7vw, 1.5rem);
   color: var(--color-text-muted);
   margin-top: 0.15rem;
   font-weight: 300;
