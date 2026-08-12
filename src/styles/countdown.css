@@ -62,7 +62,7 @@
   transition: opacity 2s ease-in-out, transform 30s ease-out;
 }
 
-.is-released .final-center-seconds {
+.is-hitting-zero .final-center-seconds {
   opacity: 0 !important;
   transform: scale(1.4); /* Continue growing smoothly into the void */
   transition: opacity 3s ease-in, transform 3s ease-in;

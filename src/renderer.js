@@ -160,24 +160,37 @@ export function getGlitchTextElements() {
 export function triggerReleaseCinematic(instant = false) {
   const blackout = document.getElementById('blackout-overlay');
   
-  /* Instantly drop the final 30 mode and apply the released mode to hide everything else */
-  document.body.classList.remove('is-final-30');
-  document.body.classList.remove('show-final-timer');
-  document.body.classList.add('is-released');
+  if (instant || !blackout) {
+    document.body.classList.remove('is-final-30', 'show-final-timer', 'is-hitting-zero');
+    document.body.classList.add('is-released');
+    startSlideshow();
+    return;
+  }
 
-  /* Start the post-release artwork slideshow */
-  startSlideshow();
-  
-  if (!blackout || instant) return;
-  
-  /* Trigger the blackout fade to black */
+  /* 
+   * SEQUENCE FOR HITTING 00:
+   * 1. Trigger the blackout overlay to fade to pitch black over 3 seconds.
+   *    It will slowly engulf the 00 text which is also fading/scaling into the void.
+   */
+  document.body.classList.add('is-hitting-zero');
   blackout.classList.add('is-blackout');
   
-  /* After a few seconds, start fading it out to reveal the posters */
+  /* 
+   * Wait 3 seconds for the screen to become completely pitch black.
+   */
   setTimeout(() => {
-    blackout.classList.remove('is-blackout');
-    blackout.classList.add('is-fading');
-  }, 2000);
+    /* 2. Now that screen is totally black, instantly swap the underlying UI to the Available Now screen */
+    document.body.classList.remove('is-final-30', 'show-final-timer', 'is-hitting-zero');
+    document.body.classList.add('is-released');
+    startSlideshow();
+
+    /* 3. A tiny tick later, slowly fade the blackout overlay to transparent over 4 seconds */
+    setTimeout(() => {
+      blackout.classList.remove('is-blackout');
+      blackout.classList.add('is-fading');
+    }, 100);
+
+  }, 3000);
 }
 
 /**
