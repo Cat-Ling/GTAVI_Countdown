@@ -305,6 +305,12 @@ export function checkFinalCountdown(totalRemainingMs) {
   
   finalSource.start(0, Math.max(0, seekTo));
 
+  /* Once the final climax track finishes, seamlessly transition back into the normal playlist! */
+  finalSource.onended = () => {
+    isFinalMode = false;
+    advanceTrack();
+  };
+
   finalGain.gain.cancelScheduledValues(now);
   finalGain.gain.setValueAtTime(0, now);
   finalGain.gain.linearRampToValueAtTime(FINAL_VOLUME, now + (CROSSFADE_MS / 1000));
