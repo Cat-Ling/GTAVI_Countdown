@@ -16,6 +16,10 @@ function init() {
 
   setupTimezoneToggle();
   startTick();
+  
+  // Make timer visible
+  const cd = document.getElementById('countdown');
+  if (cd) cd.classList.add('countdown--visible');
 }
 
 function updateDisplay(time) {

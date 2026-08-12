@@ -117,7 +117,7 @@
     135deg,
     var(--color-peach) 0%,
     var(--color-sunset-orange) 50%,
-    var(--color-hot-pink) 100%
+    var(--color-magenta) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -146,7 +146,7 @@
     135deg,
     var(--color-peach) 0%,
     var(--color-sunset-orange) 50%,
-    var(--color-hot-pink) 100%
+    var(--color-magenta) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;

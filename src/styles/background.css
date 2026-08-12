@@ -45,6 +45,7 @@
 }
 
 #bg-image-next {
+  opacity: 0;
   transition: opacity 2s ease-in-out;
   filter: brightness(0.9) saturate(1.05); /* Post-release brightness */
 }

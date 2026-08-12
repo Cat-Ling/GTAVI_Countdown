@@ -10,7 +10,7 @@ AUDIO_DIR="public/audio/aac"
 PLAYLIST_FILE="public/audio/playlist.json"
 
 # Move to the project root directory
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "$0")/.." || exit 1
 
 if [ ! -f "$PLAYLIST_FILE" ]; then
     echo "Error: $PLAYLIST_FILE not found!"
