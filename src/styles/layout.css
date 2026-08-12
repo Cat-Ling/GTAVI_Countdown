@@ -108,7 +108,7 @@
 
 .release-info__date {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.2vw, 2.5rem);
+  font-size: clamp(1rem, 2.5vmin, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.04em;
 
@@ -125,7 +125,7 @@
 }
 
 .release-info__note {
-  font-size: clamp(0.6rem, 0.7vw, 1.5rem);
+  font-size: clamp(0.7rem, 1.5vmin, 1.2rem);
   color: var(--color-text-muted);
   margin-top: 0.15rem;
   font-weight: 300;

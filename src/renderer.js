@@ -34,7 +34,7 @@ const previousValues = {};
 export function cacheElements() {
   UNITS.forEach((unit) => {
     elements[unit] = {
-      value: document.querySelector(`[data-unit="${unit}"]`),
+      values: Array.from(document.querySelectorAll(`[data-unit="${unit}"]`)),
       container: document.getElementById(`unit-${unit}`),
     };
     previousValues[unit] = null;
@@ -59,14 +59,17 @@ export function updateDisplay(time) {
     /* Skip unchanged values */
     if (previousValues[unit] === formatted) return;
 
-    const { value: valueEl, container: containerEl } = elements[unit];
-    if (!valueEl || !containerEl) return;
+    /* Value changed — update ALL DOM nodes for this unit */
+    if (elements[unit] && elements[unit].values) {
+      elements[unit].values.forEach(el => {
+        el.textContent = formatted;
+        /* Keep data-text in sync for the glitch pseudo-elements */
+        el.setAttribute('data-text', formatted);
+      });
+    }
 
-    /* Update visible text */
-    valueEl.textContent = formatted;
-
-    /* Keep data-text in sync for the glitch pseudo-elements */
-    valueEl.setAttribute('data-text', formatted);
+    const { container: containerEl } = elements[unit];
+    if (!containerEl) return;
 
     /* Brief scale pulse on change */
     containerEl.classList.add('countdown__unit--pulse');
