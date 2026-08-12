@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>GTA VI Countdown</title>
+  <meta name="color-scheme" content="dark" />
+  <link rel="stylesheet" href="/src/styles/embed.css" />
+</head>
+<body>
+  <div class="embed-wrapper">
+    <section class="release-info" id="release-info">
+      <p class="release-info__date">November 19, 2026</p>
+      <p class="release-info__note">Midnight <button class="timezone-toggle" id="timezone-toggle" type="button" aria-label="Toggle timezone">UK</button> time</p>
+    </section>
+
+    <section class="countdown" id="countdown" aria-label="Countdown to GTA VI release">
+      <div class="countdown__unit" id="unit-months">
+        <span class="countdown__value" data-unit="months">--</span>
+        <span class="countdown__label">Months</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-days">
+        <span class="countdown__value" data-unit="days">--</span>
+        <span class="countdown__label">Days</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-hours">
+        <span class="countdown__value" data-unit="hours">--</span>
+        <span class="countdown__label">Hours</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-minutes">
+        <span class="countdown__value" data-unit="minutes">--</span>
+        <span class="countdown__label">Minutes</span>
+      </div>
+      <div class="countdown__separator" aria-hidden="true">:</div>
+      <div class="countdown__unit" id="unit-seconds">
+        <span class="countdown__value" data-unit="seconds">--</span>
+        <span class="countdown__label">Seconds</span>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="/src/embed.js"></script>
+</body>
+</html>

@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        embed: resolve(__dirname, 'embed.html'),
         sw: resolve(__dirname, 'src/sw.js')
       },
       output: {
