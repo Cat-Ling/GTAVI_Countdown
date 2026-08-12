@@ -150,8 +150,10 @@
 
 .is-final-30 .app__disclaimer,
 .is-released .app__disclaimer,
-.is-final-30 .audio-pill-container {
+.is-final-30 .audio-pill {
   opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 2s ease-in-out;
 }
 
 .app__disclaimer {
