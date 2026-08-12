@@ -23,12 +23,23 @@ const MS_PER_MINUTE = MS_PER_SECOND * 60;
 const MS_PER_HOUR   = MS_PER_MINUTE * 60;
 const MS_PER_DAY    = MS_PER_HOUR * 24;
 
-/**
- * Build the target Date object in the user's local timezone.
- * Constructed once and reused — the release date doesn't change.
- */
-const RELEASE_DATE = new Date(RELEASE_YEAR, RELEASE_MONTH, RELEASE_DAY, 0, 0, 0);
+export let currentTargetMode = 'UK'; // Default to UK
 
+let RELEASE_DATE;
+
+export function setTimezone(mode) {
+  currentTargetMode = mode;
+  if (mode === 'UK') {
+    // UK in November is on GMT (UTC+0)
+    RELEASE_DATE = new Date(Date.UTC(RELEASE_YEAR, RELEASE_MONTH, RELEASE_DAY, 0, 0, 0));
+  } else {
+    // Local midnight
+    RELEASE_DATE = new Date(RELEASE_YEAR, RELEASE_MONTH, RELEASE_DAY, 0, 0, 0);
+  }
+}
+
+// Initialize
+setTimezone('UK');
 
 /**
  * Calculates the full time remaining until release.

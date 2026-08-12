@@ -21,7 +21,7 @@
  * @module main
  */
 
-import { getTimeRemaining } from './countdown.js';
+import { getTimeRemaining, setTimezone, currentTargetMode } from './countdown.js';
 import {
   initGlitch,
   createGlitchLayers,
@@ -211,6 +211,7 @@ async function init() {
   
   /* Setup UI handlers immediately to catch splash-screen interactions */
   setupAudioPill();
+  setupTimezoneToggle();
 
   /* Preload everything during the splash */
   const splashStart = Date.now();
@@ -341,6 +342,24 @@ function expandPill(text, durationMs) {
   }, durationMs);
 }
 
+
+/* ═══════════════════════════════════════════
+ * TIMEZONE TOGGLE
+ * ═══════════════════════════════════════════ */
+
+function setupTimezoneToggle() {
+  const btn = document.getElementById('timezone-toggle');
+  if (!btn) return;
+  
+  btn.addEventListener('click', () => {
+    const newMode = currentTargetMode === 'UK' ? 'local' : 'UK';
+    setTimezone(newMode);
+    btn.textContent = newMode;
+    
+    // Force a display update immediately
+    syncOnly();
+  });
+}
 
 /* ─── Boot ─── */
 if (document.readyState === 'loading') {

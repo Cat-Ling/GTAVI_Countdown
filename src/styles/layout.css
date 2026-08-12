@@ -131,6 +131,38 @@
   font-weight: 300;
 }
 
+.timezone-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  
+  /* Gradient text pulled from the artwork sunset */
+  background: linear-gradient(
+    135deg,
+    var(--color-peach) 0%,
+    var(--color-sunset-orange) 50%,
+    var(--color-hot-pink) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.timezone-toggle:hover {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(232, 70, 124, 0.4));
+}
+
+.timezone-toggle:active {
+  transform: scale(0.95);
+}
+
 
 /* ═══════════════════════════════════════════
  * FOOTER
