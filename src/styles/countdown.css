@@ -43,24 +43,18 @@
 .is-final-30 .countdown__unit:not(#unit-seconds) {
   opacity: 0 !important;
   pointer-events: none;
-}
-
-.is-final-30 .countdown__unit:not(#unit-seconds) * {
-  font-size: 0 !important;
+  max-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  line-height: 0 !important;
-  border: 0 !important;
-  transition: font-size 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, line-height 10s ease-in-out;
+  visibility: hidden;
 }
 
 .is-final-30 .countdown__separator {
   opacity: 0 !important;
-  font-size: 0 !important;
+  max-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  line-height: 0 !important;
-  transition: font-size 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, line-height 10s ease-in-out;
+  visibility: hidden;
 }
 
 .is-final-30 .countdown__unit#unit-seconds {
@@ -84,9 +78,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* Pulse scales up briefly when the value changes */
-  transition: transform var(--transition-fast);
+  position: relative;
+  max-width: 500px;
+  overflow: hidden;
+  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, visibility 10s, transform var(--transition-fast);
 }
 
 .countdown__unit--pulse {
@@ -134,6 +129,9 @@
   line-height: 1;
   /* Align with numbers, not labels */
   margin-bottom: clamp(0.8rem, 1.5vh, 4rem);
+  max-width: 100px;
+  overflow: hidden;
+  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, visibility 10s;
 }
 
 

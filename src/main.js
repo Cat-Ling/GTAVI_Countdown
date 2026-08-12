@@ -236,8 +236,15 @@ async function init() {
     getGlitchTextElements(),
   );
 
-  /* Start the requestAnimationFrame tick loop */
-  startTick();
+  /* Check if already released before starting the loop */
+  const initialTime = getTimeRemaining();
+  if (initialTime.released) {
+    console.log('[App] GTA VI is already released! 🎮');
+    triggerReleaseCinematic();
+  } else {
+    /* Start the requestAnimationFrame tick loop */
+    startTick();
+  }
 
   /* Service worker */
   registerServiceWorker();

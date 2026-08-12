@@ -21,6 +21,11 @@
   opacity: 0;
 }
 
+.is-released .background {
+  opacity: 1;
+  transition: opacity 0s; /* Instantly snaps back, hidden beneath the flashbang! */
+}
+
 /* ─── Primary background image ─── */
 .background__image {
   position: absolute;
@@ -35,6 +40,12 @@
 
   /* GPU-accelerated for smooth glitch transitions */
   will-change: transform;
+  transition: filter 3s ease-in-out;
+}
+
+.is-released .background__image {
+  /* Remove the dark overlay to make it incredibly vibrant post-release! */
+  filter: brightness(1) saturate(1.1);
 }
 
 /* ─── Glitch overlay container ─── */
