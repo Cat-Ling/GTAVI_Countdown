@@ -191,7 +191,7 @@ async function updateCache(request) {
       const cache = await caches.open(CACHE_VERSION);
       await cache.put(request, response);
     }
-  } catch (error) {
+  } catch {
     /* Silently fail — the cached version is still valid */
   }
 }

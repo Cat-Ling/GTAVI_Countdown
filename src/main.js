@@ -53,9 +53,6 @@ import { registerServiceWorker } from './pwa.js';
  */
 const MIN_SPLASH_DURATION = 1800;
 
-let tickTimeoutId = null;
-
-
 /* ═══════════════════════════════════════════
  * PRELOADING HELPERS
  * ═══════════════════════════════════════════ */
@@ -261,7 +258,6 @@ async function init() {
  * ═══════════════════════════════════════════ */
 
 let pillCollapseTimer = null;
-let audioIsUnlocked = false;
 let justUnlocked = false;
 
 function setupAudioPill() {
@@ -270,7 +266,7 @@ function setupAudioPill() {
   if (!pill || !trackEl) return;
 
   /* Toggle mute on click */
-  pill.addEventListener('click', (e) => {
+  pill.addEventListener('click', () => {
     /* If this click was the exact one that unlocked audio, don't toggle. 
        The page naturally starts unmuted, which fulfills the user's intent 
        of clicking the "Muted" icon to hear sound. */
@@ -287,7 +283,6 @@ function setupAudioPill() {
 
   /* When user gesture first unlocks audio across the page */
   onUnlock(() => {
-    audioIsUnlocked = true;
     justUnlocked = true;
     setTimeout(() => justUnlocked = false, 100);
     

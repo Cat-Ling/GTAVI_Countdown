@@ -90,7 +90,7 @@ export function getTimeRemaining() {
  * @param {string} unit  - Unit name (determines padding width)
  * @returns {string} Zero-padded string
  */
-export function formatUnit(value, unit) {
+export function formatUnit(value) {
   /* Months and days get 2 digits; time units also get 2 */
   return String(value).padStart(2, '0');
 }

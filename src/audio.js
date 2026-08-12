@@ -20,7 +20,6 @@ const MUSIC_VOLUME    = 0.35;
 const TICK_VOLUME     = 0.15;
 const FINAL_VOLUME    = 0.5;
 const CROSSFADE_MS    = 3000;
-const FADE_STEPS      = 30; // Kept for legacy fadeVolume fallback if needed, but we use linearRamp
 
 const REVERB_DECAY    = 2.0;    /* Reverb tail length in seconds */
 const REVERB_WET_MIX  = 0.6;    /* Wet signal level relative to dry */

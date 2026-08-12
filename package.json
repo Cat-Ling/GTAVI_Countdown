@@ -8,10 +8,21 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "lint": "eslint ./src",
     "generate-icons": "bash scripts/generate-icons.sh"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.1",
+    "eslint-plugin-compat": "^7.0.2",
+    "globals": "^17.10.0",
     "hint": "^7.1.13",
     "vite": "^6.0.0"
-  }
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead",
+    "not op_mini all"
+  ]
 }

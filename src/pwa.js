@@ -35,6 +35,7 @@ export function registerServiceWorker() {
   window.addEventListener('load', async () => {
     try {
       const swUrl = import.meta.env.DEV ? '/src/sw.js' : '/sw.js';
+      // eslint-disable-next-line compat/compat
       const registration = await navigator.serviceWorker.register(swUrl, {
         scope: '/',
       });
