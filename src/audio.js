@@ -373,3 +373,7 @@ export function onUnlock(callback) {
 export function getMuteState() {
   return isMuted;
 }
+
+export function isAudioUnlocked() {
+  return isUnlocked;
+}

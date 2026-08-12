@@ -40,6 +40,7 @@ import {
   checkFinalCountdown,
   toggleMute,
   getMuteState,
+  isAudioUnlocked,
   onTrackChange,
   onUnlock,
 } from './audio.js';
@@ -201,6 +202,9 @@ function setupVisibilityHandler() {
 
 async function init() {
   cacheElements();
+  
+  /* Setup UI handlers immediately to catch splash-screen interactions */
+  setupAudioPill();
 
   /* Preload everything during the splash */
   const splashStart = Date.now();
@@ -242,9 +246,6 @@ async function init() {
   /* Tab visibility handling */
   setupVisibilityHandler();
 
-  /* Audio pill UI */
-  setupAudioPill();
-
   console.log('[App] GTA VI Countdown initialized.');
 }
 
@@ -273,7 +274,7 @@ function setupAudioPill() {
     /* If this click was the exact one that unlocked audio, don't toggle. 
        The page naturally starts unmuted, which fulfills the user's intent 
        of clicking the "Muted" icon to hear sound. */
-    if (!audioIsUnlocked || justUnlocked) {
+    if (!isAudioUnlocked() || justUnlocked) {
       return;
     }
 
