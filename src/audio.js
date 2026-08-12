@@ -321,7 +321,7 @@ export function checkFinalCountdown(totalRemainingMs) {
 
   finalGain.gain.cancelScheduledValues(now);
   finalGain.gain.setValueAtTime(0, now);
-  finalGain.gain.linearRampToValueAtTime(FINAL_VOLUME, now + (CROSSFADE_MS / 1000));
+  finalGain.gain.linearRampToValueAtTime(isMuted ? 0 : FINAL_VOLUME, now + (CROSSFADE_MS / 1000));
 }
 
 
@@ -379,6 +379,13 @@ export function toggleMute() {
     musicGain.gain.cancelScheduledValues(now);
     musicGain.gain.setValueAtTime(musicGain.gain.value, now);
     musicGain.gain.linearRampToValueAtTime(isMuted ? 0 : MUSIC_VOLUME, now + 0.3);
+  }
+
+  /* Also apply mute state to the final countdown track if it is active */
+  if (finalGain && isFinalMode) {
+    finalGain.gain.cancelScheduledValues(now);
+    finalGain.gain.setValueAtTime(finalGain.gain.value, now);
+    finalGain.gain.linearRampToValueAtTime(isMuted ? 0 : FINAL_VOLUME, now + 0.3);
   }
 
   /* Note: Tick/tock volume is unaffected by the music mute button, keeping UI alive! */
