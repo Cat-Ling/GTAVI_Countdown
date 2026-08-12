@@ -20,7 +20,7 @@
 
 /* ─── Cache Configuration ─── */
 
-const CACHE_VERSION = 'gtavi-v3';
+const CACHE_VERSION = 'gtavi-v4';
 
 /**
  * Assets to pre-cache during installation.
@@ -30,8 +30,8 @@ const CACHE_VERSION = 'gtavi-v3';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/artwork.jpg',
-  '/logo.png',
+  '/artwork.webp',
+  '/logo.webp',
   '/manifest.webmanifest',
   '/audio/playlist.json',
   '/audio/countdown/tick.m4a',

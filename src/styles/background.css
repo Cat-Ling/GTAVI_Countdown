@@ -70,7 +70,7 @@
 .background__glitch-layer {
   position: absolute;
   inset: 0;
-  background-image: url('/artwork.jpg');
+  background-image: url('/artwork.webp');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
