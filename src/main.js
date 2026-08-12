@@ -284,10 +284,16 @@ function setupAudioPill() {
 
   /* Toggle mute on click */
   pill.addEventListener('click', () => {
-    /* If this click was the exact one that unlocked audio, don't toggle. 
-       The page naturally starts unmuted, which fulfills the user's intent 
-       of clicking the "Muted" icon to hear sound. */
-    if (!isAudioUnlocked() || justUnlocked) {
+    if (justUnlocked) {
+      /* The user clicked the mute button to unlock audio.
+         Because the browser forces a muted state before interaction, 
+         their intent in clicking the button was to hear sound.
+         Force the state to unmuted, regardless of what was saved. */
+      if (getMuteState() === true) {
+        toggleMute();
+      }
+      pill.classList.remove('audio-pill--muted');
+      expandPill('Unmuted', 2000);
       return;
     }
 
