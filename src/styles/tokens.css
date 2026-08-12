@@ -42,7 +42,7 @@
 
   /* ─── Typography ─── */
   --font-display:         'Outfit', system-ui, -apple-system, sans-serif;
-  --font-mono:            'Outfit', system-ui, -apple-system, sans-serif; /* Unified branding, relies on tabular-nums for fixed width */
+  --font-mono:            'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 
   /* ─── Spacing scale (8px base) ─── */
   --space-xs:  0.25rem;  /*  4px */
