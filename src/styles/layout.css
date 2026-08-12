@@ -55,7 +55,7 @@
 .is-final-30 .app__header,
 .is-released .app__header {
   opacity: 0 !important;
-  transition: opacity 10s ease-in-out;
+  transition: opacity 2s ease-in-out;
   pointer-events: none;
 }
 
@@ -97,7 +97,7 @@
 .is-final-30 .release-info,
 .is-released .release-info {
   opacity: 0 !important;
-  transition: opacity 10s ease-in-out;
+  transition: opacity 2s ease-in-out;
   pointer-events: none;
 }
 
@@ -145,11 +145,12 @@
   z-index: var(--z-content);
   pointer-events: none; /* Let clicks pass through to background if needed */
   padding-bottom: 0.5rem; /* Small cushion at the very bottom */
-  transition: opacity 10s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
-.is-final-30 .app__footer,
-.is-released .app__footer {
+.is-final-30 .app__disclaimer,
+.is-released .app__disclaimer,
+.is-final-30 .audio-pill-container {
   opacity: 0 !important;
 }
 

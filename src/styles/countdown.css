@@ -56,9 +56,10 @@
   transition: opacity 2s ease-in-out, transform 30s ease-out;
 }
 
-.is-final-30 .final-center-seconds {
+.show-final-timer .final-center-seconds {
   opacity: 1;
   transform: scale(1.3);
+  transition: opacity 2s ease-in-out, transform 30s ease-out;
 }
 
 .is-released .final-center-seconds {

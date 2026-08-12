@@ -90,9 +90,21 @@ export function updateDisplay(time) {
 
   /* Dramatic final 30 seconds mode */
   if (time.total <= 30000 && !time.released) {
-    document.body.classList.add('is-final-30');
-  } else {
+    if (!document.body.classList.contains('is-final-30')) {
+      document.body.classList.add('is-final-30');
+      
+      /* Delay the appearance of the center timer by 2 seconds to let the main UI vanish first.
+         However, if the user loads the page with < 28 seconds left, skip the delay! */
+      const delay = (time.total > 28000) ? 2000 : 0;
+      setTimeout(() => {
+        if (!document.body.classList.contains('is-released')) {
+          document.body.classList.add('show-final-timer');
+        }
+      }, delay);
+    }
+  } else if (!time.released) {
     document.body.classList.remove('is-final-30');
+    document.body.classList.remove('show-final-timer');
   }
 }
 
@@ -150,6 +162,7 @@ export function triggerReleaseCinematic(instant = false) {
   
   /* Instantly drop the final 30 mode and apply the released mode to hide everything else */
   document.body.classList.remove('is-final-30');
+  document.body.classList.remove('show-final-timer');
   document.body.classList.add('is-released');
 
   /* Start the post-release artwork slideshow */

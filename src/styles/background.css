@@ -14,7 +14,7 @@
   inset: 0;
   z-index: var(--z-background);
   overflow: hidden;
-  transition: opacity 10s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
 .is-final-30 .background {
