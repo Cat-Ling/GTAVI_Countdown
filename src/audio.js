@@ -43,6 +43,7 @@ let unlockCallback      = null;
 
 /* Web Audio API Core */
 let audioCtx          = null;
+let masterCompressor  = null;
 
 /* Tick/Tock Nodes */
 let tickBuffer        = null;
@@ -108,10 +109,19 @@ export async function initAudio() {
     /* Single Context for everything */
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+    /* Set up Master Compressor (Loudness Normalizer) */
+    masterCompressor = audioCtx.createDynamicsCompressor();
+    masterCompressor.threshold.value = -12;
+    masterCompressor.knee.value = 30;
+    masterCompressor.ratio.value = 12;
+    masterCompressor.attack.value = 0.003;
+    masterCompressor.release.value = 0.25;
+    masterCompressor.connect(audioCtx.destination);
+
     /* Set up Tick/Tock Reverb Network */
     dryGain = audioCtx.createGain();
     dryGain.gain.value = TICK_VOLUME;
-    dryGain.connect(audioCtx.destination);
+    dryGain.connect(masterCompressor);
 
     convolver = audioCtx.createConvolver();
     convolver.buffer = generateImpulseResponse(audioCtx, REVERB_DECAY);
@@ -120,7 +130,7 @@ export async function initAudio() {
     wetGain.gain.value = TICK_VOLUME * REVERB_WET_MIX;
     
     convolver.connect(wetGain);
-    wetGain.connect(audioCtx.destination);
+    wetGain.connect(masterCompressor);
 
     /* Decode tick/tock into reusable buffers */
     const [tick, tock] = await Promise.all([
@@ -133,11 +143,11 @@ export async function initAudio() {
     /* Prepare Music Nodes */
     musicGain = audioCtx.createGain();
     musicGain.gain.value = 0; // Starts silent until unlocked
-    musicGain.connect(audioCtx.destination);
+    musicGain.connect(masterCompressor);
 
     finalGain = audioCtx.createGain();
     finalGain.gain.value = 0;
-    finalGain.connect(audioCtx.destination);
+    finalGain.connect(masterCompressor);
 
     /* Preload the first track in the background */
     prepareTrack(0);
