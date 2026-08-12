@@ -39,7 +39,9 @@ import {
   resetTickPhase,
   checkFinalCountdown,
   toggleMute,
+  getMuteState,
   onTrackChange,
+  onUnlock,
 } from './audio.js';
 import { registerServiceWorker } from './pwa.js';
 
@@ -95,36 +97,41 @@ function waitForFonts(timeoutMs = 3000) {
 
 
 /* ═══════════════════════════════════════════
- * TICK LOOP
+ * TICK LOOP (requestAnimationFrame)
  * ═══════════════════════════════════════════
  *
- * Uses setTimeout instead of setInterval, re-calculating
- * the delay to align each tick to the next second boundary.
- * This prevents drift and keeps tick/tock sounds synced
- * with the actual clock rollover.
- *
- * setInterval(fn, 1000) drifts because each callback's
- * execution time accumulates. setTimeout self-corrects
- * by measuring how far off we are each iteration.
+ * Uses requestAnimationFrame to poll the time perfectly
+ * in sync with the screen's refresh rate. We only update
+ * the DOM and play audio when the actual second changes.
+ * This completely prevents drift and iOS setTimeout throttling.
  * ═══════════════════════════════════════════ */
 
-/**
- * Full tick — updates display AND plays audio.
- * This is the normal per-second callback.
- */
-function tick() {
-  const time = getTimeRemaining();
-  updateDisplay(time);
-  playTick();
-  checkFinalCountdown(time.total);
+let rAFId = null;
+let lastSecondStr = '';
 
-  if (time.released) {
-    cancelTick();
-    console.log('[App] GTA VI has been released! 🎮');
-    return;
+/**
+ * The main render loop, runs every frame (usually 60fps).
+ */
+function tickLoop() {
+  const time = getTimeRemaining();
+  
+  /* Create a string representation to detect when the second ticks over */
+  const currentSecondStr = `${time.days}:${time.hours}:${time.minutes}:${time.seconds}`;
+  
+  if (currentSecondStr !== lastSecondStr) {
+    lastSecondStr = currentSecondStr;
+    
+    updateDisplay(time);
+    playTick();
+    checkFinalCountdown(time.total);
+  
+    if (time.released) {
+      console.log('[App] GTA VI has been released! 🎮');
+      return; /* Stop the loop */
+    }
   }
 
-  scheduleNextTick();
+  rAFId = requestAnimationFrame(tickLoop);
 }
 
 /**
@@ -134,28 +141,27 @@ function tick() {
  */
 function syncOnly() {
   const time = getTimeRemaining();
+  lastSecondStr = `${time.days}:${time.hours}:${time.minutes}:${time.seconds}`;
   updateDisplay(time);
   checkFinalCountdown(time.total);
 }
 
 /**
- * Schedules the next tick to fire at the next second boundary.
- * Calculates milliseconds until the next whole second and
- * sets a timeout for exactly that duration.
+ * Starts the tick loop.
  */
-function scheduleNextTick() {
-  const now = Date.now();
-  const msUntilNextSecond = 1000 - (now % 1000);
-  tickTimeoutId = setTimeout(tick, msUntilNextSecond);
+function startTick() {
+  if (rAFId === null) {
+    rAFId = requestAnimationFrame(tickLoop);
+  }
 }
 
 /**
  * Stops the tick loop.
  */
 function cancelTick() {
-  if (tickTimeoutId !== null) {
-    clearTimeout(tickTimeoutId);
-    tickTimeoutId = null;
+  if (rAFId !== null) {
+    cancelAnimationFrame(rAFId);
+    rAFId = null;
   }
 }
 
@@ -178,13 +184,12 @@ function cancelTick() {
 function setupVisibilityHandler() {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      /* Tab hidden: stop the tick loop, music continues */
       cancelTick();
     } else {
-      /* Tab visible: sync display silently, restart loop */
-      resetTickPhase();
+      /* User returned — sync silently then resume ticking */
       syncOnly();
-      scheduleNextTick();
+      resetTickPhase();
+      startTick();
     }
   });
 }
@@ -228,8 +233,8 @@ async function init() {
     getGlitchTextElements(),
   );
 
-  /* Start the self-correcting tick loop */
-  scheduleNextTick();
+  /* Start the requestAnimationFrame tick loop */
+  startTick();
 
   /* Service worker */
   registerServiceWorker();
@@ -255,6 +260,8 @@ async function init() {
  * ═══════════════════════════════════════════ */
 
 let pillCollapseTimer = null;
+let audioIsUnlocked = false;
+let justUnlocked = false;
 
 function setupAudioPill() {
   const pill = document.getElementById('audio-pill');
@@ -262,12 +269,30 @@ function setupAudioPill() {
   if (!pill || !trackEl) return;
 
   /* Toggle mute on click */
-  pill.addEventListener('click', () => {
+  pill.addEventListener('click', (e) => {
+    /* If this click was the exact one that unlocked audio, don't toggle. 
+       The page naturally starts unmuted, which fulfills the user's intent 
+       of clicking the "Muted" icon to hear sound. */
+    if (!audioIsUnlocked || justUnlocked) {
+      return;
+    }
+
     const muted = toggleMute();
     pill.classList.toggle('audio-pill--muted', muted);
 
     /* Briefly show mute state */
     expandPill(muted ? 'Muted' : 'Unmuted', 2000);
+  });
+
+  /* When user gesture first unlocks audio across the page */
+  onUnlock(() => {
+    audioIsUnlocked = true;
+    justUnlocked = true;
+    setTimeout(() => justUnlocked = false, 100);
+    
+    /* Sync UI with the user's saved preference */
+    const isMuted = getMuteState();
+    pill.classList.toggle('audio-pill--muted', isMuted);
   });
 
   /* Expand with track title when music changes */

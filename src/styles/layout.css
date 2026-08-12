@@ -17,16 +17,23 @@
   justify-content: center;
   gap: clamp(0.5rem, 2vh, 1.5rem);
 
-  /* Lock to viewport — no scroll */
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
+  /* Allow graceful scrolling if viewport is extremely short */
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   /* Safe area padding for notches and cutouts */
   padding: calc(var(--space-md) + var(--safe-top))
            calc(var(--space-md) + var(--safe-right))
-           calc(var(--space-sm) + var(--safe-bottom))
+           calc(var(--space-md) + var(--safe-bottom))
            calc(var(--space-md) + var(--safe-left));
+}
+
+/* Pseudo-element to balance and push content slightly higher than true center */
+.app::before {
+  content: '';
+  flex: 1;
 }
 
 
@@ -35,6 +42,9 @@
  * ═══════════════════════════════════════════ */
 
 .app__header {
+  /* Optical alignment: pull the timer closer to the logo */
+  margin-bottom: -2vh;
+
   /* Entrance animation */
   opacity: 0;
   transform: translateY(-15px) scale(0.96);
@@ -57,14 +67,6 @@
 
   filter: drop-shadow(0 0 25px rgba(232, 70, 124, 0.25))
           drop-shadow(0 0 50px rgba(173, 111, 174, 0.12));
-
-  /* Gentle floating animation */
-  animation: logo-float 6s ease-in-out infinite;
-}
-
-@keyframes logo-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
 }
 
 
@@ -118,7 +120,14 @@
  * ═══════════════════════════════════════════ */
 
 .app__footer {
-  margin-top: auto;
+  flex: 1.5; /* Takes up slightly more free space than the top spacer, pushing content UP */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  z-index: var(--z-content);
+  pointer-events: none; /* Let clicks pass through to background if needed */
+  padding-bottom: 0.5rem; /* Small cushion at the very bottom */
 }
 
 .app__disclaimer {
@@ -128,4 +137,6 @@
   text-align: center;
   max-width: 320px;
   line-height: 1.5;
+  margin: 0 auto;
+  pointer-events: auto;
 }

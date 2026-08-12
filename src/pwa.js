@@ -34,7 +34,8 @@ export function registerServiceWorker() {
    */
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('/sw.js', {
+      const swUrl = import.meta.env.DEV ? '/src/sw.js' : '/sw.js';
+      const registration = await navigator.serviceWorker.register(swUrl, {
         scope: '/',
       });
 

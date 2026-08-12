@@ -15,8 +15,6 @@
  * ═══════════════════════════════════════════ */
 @media (max-width: 600px) and (orientation: portrait) {
   .app {
-    justify-content: space-between;
-    gap: 0;
     padding: calc(var(--space-lg) + var(--safe-top))
              calc(var(--space-md) + var(--safe-right))
              calc(var(--space-sm) + var(--safe-bottom))
@@ -140,7 +138,7 @@
 @media (max-width: 600px) and (max-height: 600px) and (orientation: portrait) {
   .app {
     padding-top: calc(var(--space-sm) + var(--safe-top));
-    padding-bottom: calc(var(--space-xs) + var(--safe-bottom));
+    padding-bottom: calc(var(--space-sm) + var(--safe-bottom));
   }
 
   .app__logo {
@@ -166,10 +164,6 @@
   .release-info__note {
     font-size: 0.5rem;
   }
-
-  .app__footer {
-    display: none;
-  }
 }
 
 
@@ -182,7 +176,7 @@
     gap: clamp(0.2rem, 1vh, 0.5rem);
     padding: calc(0.5rem + var(--safe-top))
              calc(0.5rem + var(--safe-right))
-             calc(0.3rem + var(--safe-bottom))
+             calc(0.5rem + var(--safe-bottom))
              calc(0.5rem + var(--safe-left));
   }
 
@@ -214,10 +208,6 @@
 
   .release-info__note {
     font-size: 0.5rem;
-  }
-
-  .app__footer {
-    display: none;
   }
 
   .background__image {

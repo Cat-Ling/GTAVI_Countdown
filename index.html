@@ -183,34 +183,29 @@
 
     <!-- Footer -->
     <footer class="app__footer">
+      <button class="audio-pill audio-pill--muted" id="audio-pill" aria-label="Toggle audio" type="button">
+        <!-- Unmuted icon (speaker with waves) -->
+        <svg class="audio-pill__icon audio-pill__icon--unmuted" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M19.07 4.93a10 10 0 010 14.14"/>
+          <path d="M15.54 8.46a5 5 0 010 7.07"/>
+        </svg>
+        <!-- Muted icon (speaker with X) -->
+        <svg class="audio-pill__icon audio-pill__icon--muted" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+        <span class="audio-pill__track" id="audio-track"></span>
+      </button>
+
       <p class="app__disclaimer">
         Fan-made countdown. Not affiliated with Rockstar Games or Take-Two Interactive.
       </p>
     </footer>
   </main>
-
-  <!-- ═══════════════════════════════════════════
-       AUDIO CONTROL
-       Fixed bottom-left pill that expands to show
-       the current track, then collapses back.
-       ═══════════════════════════════════════════ -->
-  <button class="audio-pill" id="audio-pill" aria-label="Toggle audio" type="button">
-    <!-- Unmuted icon (speaker with waves) -->
-    <svg class="audio-pill__icon audio-pill__icon--unmuted" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-      <path d="M19.07 4.93a10 10 0 010 14.14"/>
-      <path d="M15.54 8.46a5 5 0 010 7.07"/>
-    </svg>
-    <!-- Muted icon (speaker with X) -->
-    <svg class="audio-pill__icon audio-pill__icon--muted" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-      <line x1="23" y1="9" x2="17" y2="15"/>
-      <line x1="17" y1="9" x2="23" y2="15"/>
-    </svg>
-    <span class="audio-pill__track" id="audio-track"></span>
-  </button>
 
   <!-- Application Entry Point -->
   <script type="module" src="/src/main.js"></script>

@@ -33,57 +33,48 @@
 .loader::before {
   content: '';
   position: absolute;
-  width: 120vmax;
-  height: 120vmax;
+  width: 150vmax;
+  height: 150vmax;
   border-radius: 50%;
 
   /*
-   * Soft radial gradient from warm accent tones
-   * to the base background color. The colors are
-   * pulled from the artwork palette.
+   * Rich, multi-stop radial gradient using vibrant
+   * pinks, magentas, and deep purples to create a
+   * cinematic neon glow behind the logo.
    */
   background: radial-gradient(
-    circle,
-    rgba(164, 50, 110, 0.18) 0%,
-    rgba(173, 111, 174, 0.10) 25%,
-    rgba(84, 37, 96, 0.06) 45%,
-    transparent 65%
+    circle at center,
+    rgba(232, 70, 124, 0.25) 0%,
+    rgba(164, 50, 110, 0.15) 15%,
+    rgba(173, 111, 174, 0.08) 30%,
+    rgba(84, 37, 96, 0.03) 50%,
+    transparent 70%
   );
 
-  /* Breathing pulse — scale and opacity cycle */
-  animation: loader-glow 3s ease-in-out infinite;
+  /* Complex breathing pulse — scales, shifts colors, and rotates slightly */
+  animation: loader-glow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
 @keyframes loader-glow {
-  0%, 100% {
-    transform: scale(0.6);
-    opacity: 0.5;
+  0% {
+    transform: scale(0.7) rotate(0deg);
+    opacity: 0.4;
+    filter: hue-rotate(-10deg);
   }
-  50% {
-    transform: scale(1);
+  100% {
+    transform: scale(1.1) rotate(5deg);
     opacity: 1;
+    filter: hue-rotate(15deg);
   }
 }
 
 /* ─── Logo ─── */
 .loader__logo {
   position: relative; /* Above the glow pseudo-element */
-  width: clamp(180px, 35vmin, 300px);
+  width: clamp(240px, 45vmin, 420px); /* Larger splash logo */
   height: auto;
 
-  /* Drop shadow adds depth against the glow */
-  filter: drop-shadow(0 0 20px rgba(232, 70, 124, 0.3))
-          drop-shadow(0 0 50px rgba(173, 111, 174, 0.15));
-
-  /* Gentle scale pulse synced loosely with the glow */
-  animation: loader-logo-breathe 3s ease-in-out infinite;
-}
-
-@keyframes loader-logo-breathe {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.03);
-  }
+  /* Richer drop shadow to punch through the improved glow */
+  filter: drop-shadow(0 0 30px rgba(232, 70, 124, 0.4))
+          drop-shadow(0 0 60px rgba(173, 111, 174, 0.2));
 }
