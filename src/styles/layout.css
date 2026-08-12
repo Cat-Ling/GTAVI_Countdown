@@ -76,6 +76,9 @@
 
 .release-info {
   text-align: center;
+  
+  /* Create visual separation from the timer block above it */
+  margin-top: clamp(1rem, 4vh, 3rem);
 
   /* Entrance animation */
   opacity: 0;
