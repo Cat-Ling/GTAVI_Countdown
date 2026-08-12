@@ -351,10 +351,20 @@ function setupTimezoneToggle() {
   const btn = document.getElementById('timezone-toggle');
   if (!btn) return;
   
+  // Restore saved preference
+  const savedMode = localStorage.getItem('gtavi_timezone_mode') || 'UK';
+  if (savedMode !== currentTargetMode) {
+    setTimezone(savedMode);
+  }
+  btn.textContent = savedMode;
+  
   btn.addEventListener('click', () => {
     const newMode = currentTargetMode === 'UK' ? 'local' : 'UK';
     setTimezone(newMode);
     btn.textContent = newMode;
+    
+    // Save preference
+    localStorage.setItem('gtavi_timezone_mode', newMode);
     
     // Force a display update immediately
     syncOnly();
