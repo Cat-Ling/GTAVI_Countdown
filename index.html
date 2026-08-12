@@ -181,8 +181,22 @@
 
     <!-- Post-Release UI (Hidden by default) -->
     <section class="released-message" id="released-message" aria-hidden="true">
-      <h1 class="released-message__title">AVAILABLE NOW</h1>
-      <p class="released-message__subtitle">Welcome to Leonida.</p>
+      <div class="released-message__content">
+        <picture class="released-message__poster">
+          <!-- Ultrawide -->
+          <source media="(min-aspect-ratio: 21/9)" srcset="/posters/poster-ultrawide.jpg">
+          <!-- Desktop 16:9 -->
+          <source media="(min-width: 1200px)" srcset="/posters/poster-16x9.jpg">
+          <!-- Square / Tablet -->
+          <source media="(min-width: 768px)" srcset="/posters/poster-square.jpg">
+          <!-- Fallback Portrait -->
+          <img src="/posters/poster-portrait.jpg" alt="GTA VI Poster" draggable="false" />
+        </picture>
+        <div class="released-message__text">
+          <h1 class="released-message__title">AVAILABLE NOW</h1>
+          <p class="released-message__subtitle">Welcome to Leonida.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Blackout Overlay -->

@@ -30,8 +30,7 @@
  * ═══════════════════════════════════════════ */
 
 .is-final-30 .countdown {
-  gap: 0;
-  transition: gap 10s ease-in-out;
+  /* No layout changes, just fading */
 }
 
 .is-released .countdown {
@@ -43,22 +42,15 @@
 .is-final-30 .countdown__unit:not(#unit-seconds) {
   opacity: 0 !important;
   pointer-events: none;
-  max-width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  /* visibility: hidden removed because we want it to animate properly without abruptly snapping */
 }
 
 .is-final-30 .countdown__separator {
   opacity: 0 !important;
-  max-width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 .is-final-30 .countdown__unit#unit-seconds {
-  transform: scale(2.5);
-  transition: transform 30s ease-out; /* Slowly creeps larger over the entire 30s! */
+  transform: scale(1.5);
+  transition: transform 30s ease-out; /* Subtle scale up */
 }
 
 .is-final-30 .countdown__label {
@@ -73,13 +65,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .is-final-30 .countdown {
-    gap: clamp(0.3rem, 1.5vw, 3rem); /* Keep original gap */
-  }
-  .is-final-30 .countdown__unit:not(#unit-seconds),
-  .is-final-30 .countdown__separator {
-    max-width: 500px !important; /* Do not collapse layout */
-  }
   .is-final-30 .countdown__unit#unit-seconds {
     transform: scale(1); /* No scale creeping */
   }
@@ -91,11 +76,8 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-width: 500px;
-  overflow: hidden;
-  white-space: nowrap;
-  /* Opacity fades out quickly (2s), layout collapses slowly (10s) */
-  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 2s ease-out, transform var(--transition-fast);
+  /* Opacity fades out */
+  transition: opacity 2s ease-out, transform var(--transition-fast);
 }
 
 .countdown__unit--pulse {
@@ -143,10 +125,7 @@
   line-height: 1;
   /* Align with numbers, not labels */
   margin-bottom: clamp(0.8rem, 1.5vh, 4rem);
-  max-width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 2s ease-out;
+  transition: opacity 2s ease-out;
 }
 
 
