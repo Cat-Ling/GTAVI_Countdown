@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.5rem, 2vh, 1.5rem);
+  gap: clamp(0.5rem, 2vh, 4rem);
 
   /* Allow graceful scrolling if viewport is extremely short */
   min-height: 100vh;
@@ -62,7 +62,7 @@
    * Sized relative to viewport so it scales with the screen.
    * min() prevents it from overflowing on any axis.
    */
-  width: min(34vw, 32vh, 360px);
+  width: min(34vw, 32vh, 600px);
   height: auto;
 
   filter: drop-shadow(0 0 25px rgba(232, 70, 124, 0.25))
@@ -78,7 +78,7 @@
   text-align: center;
   
   /* Create visual separation from the timer block above it */
-  margin-top: clamp(1rem, 4vh, 3rem);
+  margin-top: clamp(1rem, 10vh, 8rem);
 
   /* Entrance animation */
   opacity: 0;
@@ -94,7 +94,7 @@
 
 .release-info__date {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+  font-size: clamp(0.9rem, 2.5vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0.04em;
 
@@ -111,7 +111,7 @@
 }
 
 .release-info__note {
-  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  font-size: clamp(0.6rem, 1.2vw, 1.5rem);
   color: var(--color-text-muted);
   margin-top: 0.15rem;
   font-weight: 300;
@@ -134,7 +134,7 @@
 }
 
 .app__disclaimer {
-  font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+  font-size: clamp(0.5rem, 0.8vw, 1rem);
   color: var(--color-text-muted);
   opacity: 0.4;
   text-align: center;
