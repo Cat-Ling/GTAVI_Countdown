@@ -30,7 +30,10 @@
  * ═══════════════════════════════════════════ */
 
 .is-final-30 .countdown {
-  /* No layout changes, just fading */
+  /* GPU-accelerated slide to perfectly center the rightmost unit 
+     (~37% shift left centers the 4th column of a 4-column flex box) */
+  transform: translateX(-37%);
+  transition: transform 10s ease-in-out;
 }
 
 .is-released .countdown {
@@ -65,6 +68,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .is-final-30 .countdown {
+    transform: none; /* No sliding */
+  }
   .is-final-30 .countdown__unit#unit-seconds {
     transform: scale(1); /* No scale creeping */
   }

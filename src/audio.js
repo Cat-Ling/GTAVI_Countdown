@@ -159,6 +159,14 @@ export async function initAudio() {
 
     setupAutoplayUnlock();
 
+    /* Automatically resume audio context when returning to the tab.
+       Crucial for post-release state when tick loop is stopped! */
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && audioCtx && (audioCtx.state === 'suspended' || audioCtx.state === 'interrupted')) {
+        audioCtx.resume().catch(() => {});
+      }
+    });
+
     console.log(`[Audio] Ready. Shuffled ${playlist.length} tracks. First: "${playlist[0].title}"`);
   } catch (error) {
     console.warn('[Audio] Init failed:', error);
