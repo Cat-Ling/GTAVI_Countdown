@@ -50,7 +50,6 @@ import {
   checkFinalCountdown,
   toggleMute,
   getMuteState,
-  isAudioUnlocked,
   onTrackChange,
   onUnlock,
 } from './audio.js';
