@@ -136,3 +136,26 @@ export function showContent() {
 export function getGlitchTextElements() {
   return Array.from(document.querySelectorAll('.glitch-text'));
 }
+
+
+/**
+ * Triggers the cinematic release flash and shows the final UI.
+ */
+export function triggerReleaseCinematic() {
+  const flash = document.getElementById('flash-overlay');
+  
+  /* Instantly drop the final 30 mode and apply the released mode to hide everything else */
+  document.body.classList.remove('is-final-30');
+  document.body.classList.add('is-released');
+  
+  if (!flash) return;
+  
+  /* Trigger the flash in */
+  flash.classList.add('is-flashing');
+  
+  /* After a brief moment, start fading it out */
+  setTimeout(() => {
+    flash.classList.remove('is-flashing');
+    flash.classList.add('is-fading');
+  }, 1000);
+}

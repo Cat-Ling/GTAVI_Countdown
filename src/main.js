@@ -32,6 +32,7 @@ import {
   showContent,
   hideLoader,
   getGlitchTextElements,
+  triggerReleaseCinematic,
 } from './renderer.js';
 import {
   initAudio,
@@ -125,6 +126,7 @@ function tickLoop() {
   
     if (time.released) {
       console.log('[App] GTA VI has been released! 🎮');
+      triggerReleaseCinematic();
       return; /* Stop the loop */
     }
   }

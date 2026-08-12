@@ -34,19 +34,33 @@
   transition: gap 10s ease-in-out;
 }
 
+.is-released .countdown {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
 .is-final-30 .countdown__unit:not(#unit-seconds) {
   opacity: 0 !important;
   pointer-events: none;
-  position: absolute;
-  visibility: hidden;
-  transition: opacity 10s ease-in-out, visibility 10s ease-in-out;
+}
+
+.is-final-30 .countdown__unit:not(#unit-seconds) * {
+  font-size: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  border: 0 !important;
+  transition: font-size 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, line-height 10s ease-in-out;
 }
 
 .is-final-30 .countdown__separator {
   opacity: 0 !important;
-  position: absolute;
-  visibility: hidden;
-  transition: opacity 10s ease-in-out, visibility 10s ease-in-out;
+  font-size: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  transition: font-size 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, line-height 10s ease-in-out;
 }
 
 .is-final-30 .countdown__unit#unit-seconds {

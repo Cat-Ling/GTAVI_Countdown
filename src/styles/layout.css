@@ -52,7 +52,8 @@
               transform 1s var(--ease-out-back);
 }
 
-.is-final-30 .app__header {
+.is-final-30 .app__header,
+.is-released .app__header {
   opacity: 0 !important;
   transition: opacity 10s ease-in-out;
   pointer-events: none;
@@ -93,7 +94,8 @@
               transform 800ms var(--ease-out-expo) 400ms;
 }
 
-.is-final-30 .release-info {
+.is-final-30 .release-info,
+.is-released .release-info {
   opacity: 0 !important;
   transition: opacity 10s ease-in-out;
   pointer-events: none;
@@ -146,7 +148,8 @@
   transition: opacity 10s ease-in-out;
 }
 
-.is-final-30 .app__footer {
+.is-final-30 .app__footer,
+.is-released .app__footer {
   opacity: 0 !important;
 }
 
@@ -159,4 +162,68 @@
   line-height: 1.5;
   margin: 0 auto;
   pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════
+ * POST-RELEASE CINEMATICS
+ * ═══════════════════════════════════════════ */
+
+/* The Bloom Flash */
+.flash-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0s; /* Instant by default */
+}
+
+.flash-overlay.is-flashing {
+  opacity: 0.9;
+  transition: opacity 0.1s ease-out; /* Fast flash in */
+}
+
+.flash-overlay.is-fading {
+  opacity: 0;
+  transition: opacity 3s ease-in; /* Slow dramatic fade out */
+}
+
+/* Available Now Message */
+.released-message {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: var(--z-content);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 3s ease-in-out 1s; /* Fade in slowly after flash */
+}
+
+.is-released .released-message {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.released-message__title {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 5vw, 6rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+               0 0 40px rgba(232, 70, 124, 0.5);
+}
+
+.released-message__subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 1.5vw, 2.5rem);
+  color: var(--color-accent);
+  opacity: 0.8;
+  letter-spacing: 0.1em;
 }
