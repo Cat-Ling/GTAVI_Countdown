@@ -80,13 +80,6 @@
   line-height: 1;
   /* Align with numbers, not labels */
   margin-bottom: clamp(0.8rem, 1.5vh, 4rem);
-  /* Pulsing blink */
-  animation: separator-pulse 2s ease-in-out infinite;
-}
-
-@keyframes separator-pulse {
-  0%, 100% { opacity: 0.5; }
-  50%      { opacity: 0.12; }
 }
 
 
