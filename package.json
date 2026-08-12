@@ -11,6 +11,7 @@
     "generate-icons": "bash scripts/generate-icons.sh"
   },
   "devDependencies": {
+    "hint": "^7.1.13",
     "vite": "^6.0.0"
   }
 }
