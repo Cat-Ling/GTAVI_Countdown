@@ -151,6 +151,9 @@ export function triggerReleaseCinematic(instant = false) {
   /* Instantly drop the final 30 mode and apply the released mode to hide everything else */
   document.body.classList.remove('is-final-30');
   document.body.classList.add('is-released');
+
+  /* Start the post-release artwork slideshow */
+  startSlideshow();
   
   if (!blackout || instant) return;
   
@@ -162,4 +165,48 @@ export function triggerReleaseCinematic(instant = false) {
     blackout.classList.remove('is-blackout');
     blackout.classList.add('is-fading');
   }, 2000);
+}
+
+/**
+ * ═══════════════════════════════════════════
+ * SLIDESHOW (POST-RELEASE)
+ * ═══════════════════════════════════════════
+ */
+let slideshowInterval = null;
+let currentSlide = 0;
+const totalSlides = 20;
+
+function startSlideshow() {
+  if (slideshowInterval) return;
+
+  const bgImage = document.getElementById('bg-image');
+  const bgImageNext = document.getElementById('bg-image-next');
+  if (!bgImage || !bgImageNext) return;
+
+  /* First slide is the main artwork, start cycling from slide 1 (art-01) */
+  slideshowInterval = setInterval(() => {
+    currentSlide = (currentSlide % totalSlides) + 1;
+    const formattedNum = String(currentSlide).padStart(2, '0');
+    const nextImageUrl = `url('/artworks/art-${formattedNum}.webp')`;
+
+    /* Preload the image in JS before showing it */
+    const img = new Image();
+    img.src = `/artworks/art-${formattedNum}.webp`;
+    img.onload = () => {
+      /* Once loaded, assign to the invisible layer and crossfade */
+      bgImageNext.style.backgroundImage = nextImageUrl;
+      bgImageNext.style.opacity = '1';
+      
+      /* Wait for crossfade to finish, then swap and reset */
+      setTimeout(() => {
+        bgImage.style.backgroundImage = nextImageUrl;
+        bgImageNext.style.opacity = '0';
+        bgImageNext.style.transition = 'none'; /* Instant hide after swap */
+        
+        /* Force reflow so transition is re-enabled correctly for next loop */
+        void bgImageNext.offsetWidth;
+        bgImageNext.style.transition = 'opacity 2s ease-in-out';
+      }, 2000);
+    };
+  }, 7000); /* 7 second cycle */
 }

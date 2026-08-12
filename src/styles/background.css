@@ -30,7 +30,7 @@
 .background__image {
   position: absolute;
   inset: 0;
-  background-image: url('/artwork.jpg');
+  background-image: url('/artwork.webp');
   background-size: cover;
   background-position: center 30%; /* Focus on characters, not sky */
   background-repeat: no-repeat;
@@ -40,12 +40,18 @@
 
   /* GPU-accelerated for smooth glitch transitions */
   will-change: transform;
-  transition: filter 3s ease-in-out;
+  /* Add background-image to transition for the post-release slideshow */
+  transition: filter 3s ease-in-out, opacity 2s ease-in-out;
+}
+
+#bg-image-next {
+  transition: opacity 2s ease-in-out;
+  filter: brightness(0.9) saturate(1.05); /* Post-release brightness */
 }
 
 .is-released .background__image {
   /* Remove the dark overlay to make it incredibly vibrant post-release! */
-  filter: brightness(1) saturate(1.1);
+  filter: brightness(0.9) saturate(1.05); /* Adjusted slightly so it's not blindingly bright */
 }
 
 /* ─── Glitch overlay container ─── */

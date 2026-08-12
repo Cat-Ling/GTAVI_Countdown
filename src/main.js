@@ -210,8 +210,8 @@ async function init() {
   /* Preload everything during the splash */
   const splashStart = Date.now();
   await Promise.all([
-    preloadImage('/artwork.jpg'),
-    preloadImage('/logo.png'),
+    preloadImage('/artwork.webp'),
+    preloadImage('/logo.webp'),
     waitForFonts(),
     initAudio(),
   ]);
