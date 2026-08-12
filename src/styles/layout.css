@@ -52,6 +52,12 @@
               transform 1s var(--ease-out-back);
 }
 
+.is-final-30 .app__header {
+  opacity: 0 !important;
+  transition: opacity 10s ease-in-out;
+  pointer-events: none;
+}
+
 .app__header--visible {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -85,6 +91,12 @@
   transform: translateY(10px);
   transition: opacity 800ms var(--ease-out-expo) 400ms,
               transform 800ms var(--ease-out-expo) 400ms;
+}
+
+.is-final-30 .release-info {
+  opacity: 0 !important;
+  transition: opacity 10s ease-in-out;
+  pointer-events: none;
 }
 
 .release-info--visible {
@@ -131,6 +143,11 @@
   z-index: var(--z-content);
   pointer-events: none; /* Let clicks pass through to background if needed */
   padding-bottom: 0.5rem; /* Small cushion at the very bottom */
+  transition: opacity 10s ease-in-out;
+}
+
+.is-final-30 .app__footer {
+  opacity: 0 !important;
 }
 
 .app__disclaimer {

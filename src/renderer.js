@@ -84,6 +84,13 @@ export function updateDisplay(time) {
   if (shouldGlitch) {
     fireGlitch();
   }
+
+  /* Dramatic final 30 seconds mode */
+  if (time.total <= 30000 && !time.released) {
+    document.body.classList.add('is-final-30');
+  } else {
+    document.body.classList.remove('is-final-30');
+  }
 }
 
 

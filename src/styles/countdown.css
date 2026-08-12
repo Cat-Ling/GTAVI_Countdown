@@ -25,6 +25,46 @@
   transform: translateY(0);
 }
 
+/* ═══════════════════════════════════════════
+ * FINAL 30 SECONDS DRAMA
+ * ═══════════════════════════════════════════ */
+
+.is-final-30 .countdown {
+  gap: 0;
+  transition: gap 10s ease-in-out;
+}
+
+.is-final-30 .countdown__unit:not(#unit-seconds) {
+  opacity: 0 !important;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+  transition: opacity 10s ease-in-out, visibility 10s ease-in-out;
+}
+
+.is-final-30 .countdown__separator {
+  opacity: 0 !important;
+  position: absolute;
+  visibility: hidden;
+  transition: opacity 10s ease-in-out, visibility 10s ease-in-out;
+}
+
+.is-final-30 .countdown__unit#unit-seconds {
+  transform: scale(2.5);
+  transition: transform 30s ease-out; /* Slowly creeps larger over the entire 30s! */
+}
+
+.is-final-30 .countdown__label {
+  opacity: 0 !important;
+  transition: opacity 5s ease-in-out;
+}
+
+.is-final-30 .countdown__value {
+  text-shadow: 0 0 30px rgba(232, 70, 124, 0.8),
+               0 0 60px rgba(173, 111, 174, 0.6);
+  transition: text-shadow 10s ease-in-out;
+}
+
 /* ─── Individual unit column ─── */
 .countdown__unit {
   display: flex;
