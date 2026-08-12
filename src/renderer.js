@@ -140,15 +140,16 @@ export function getGlitchTextElements() {
 
 /**
  * Triggers the cinematic release flash and shows the final UI.
+ * @param {boolean} instant - If true, skips the flashbang (used for subsequent visits after release)
  */
-export function triggerReleaseCinematic() {
+export function triggerReleaseCinematic(instant = false) {
   const flash = document.getElementById('flash-overlay');
   
   /* Instantly drop the final 30 mode and apply the released mode to hide everything else */
   document.body.classList.remove('is-final-30');
   document.body.classList.add('is-released');
   
-  if (!flash) return;
+  if (!flash || instant) return;
   
   /* Trigger the flash in */
   flash.classList.add('is-flashing');

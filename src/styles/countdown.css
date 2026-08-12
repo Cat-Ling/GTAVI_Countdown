@@ -46,7 +46,7 @@
   max-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  visibility: hidden;
+  /* visibility: hidden removed because we want it to animate properly without abruptly snapping */
 }
 
 .is-final-30 .countdown__separator {
@@ -54,7 +54,6 @@
   max-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  visibility: hidden;
 }
 
 .is-final-30 .countdown__unit#unit-seconds {
@@ -73,6 +72,19 @@
   transition: text-shadow 10s ease-in-out;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .is-final-30 .countdown {
+    gap: clamp(0.3rem, 1.5vw, 3rem); /* Keep original gap */
+  }
+  .is-final-30 .countdown__unit:not(#unit-seconds),
+  .is-final-30 .countdown__separator {
+    max-width: 500px !important; /* Do not collapse layout */
+  }
+  .is-final-30 .countdown__unit#unit-seconds {
+    transform: scale(1); /* No scale creeping */
+  }
+}
+
 /* ─── Individual unit column ─── */
 .countdown__unit {
   display: flex;
@@ -81,7 +93,9 @@
   position: relative;
   max-width: 500px;
   overflow: hidden;
-  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, visibility 10s, transform var(--transition-fast);
+  white-space: nowrap;
+  /* Opacity fades out quickly (2s), layout collapses slowly (10s) */
+  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 2s ease-out, transform var(--transition-fast);
 }
 
 .countdown__unit--pulse {
@@ -131,7 +145,8 @@
   margin-bottom: clamp(0.8rem, 1.5vh, 4rem);
   max-width: 100px;
   overflow: hidden;
-  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 10s ease-in-out, visibility 10s;
+  white-space: nowrap;
+  transition: max-width 10s ease-in-out, margin 10s ease-in-out, padding 10s ease-in-out, opacity 2s ease-out;
 }
 
 

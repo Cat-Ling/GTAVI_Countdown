@@ -123,12 +123,14 @@ function tickLoop() {
     updateDisplay(time);
     playTick();
     checkFinalCountdown(time.total);
-  
-    if (time.released) {
-      console.log('[App] GTA VI has been released! 🎮');
-      triggerReleaseCinematic();
-      return; /* Stop the loop */
-    }
+  }
+
+  /* Must check release state on EVERY frame independently of second ticks,
+     because once it hits 00:00:00:00, the second string never changes again! */
+  if (time.released) {
+    console.log('[App] GTA VI has been released! 🎮');
+    triggerReleaseCinematic();
+    return; /* Stop the loop */
   }
 
   rAFId = requestAnimationFrame(tickLoop);
@@ -240,7 +242,7 @@ async function init() {
   const initialTime = getTimeRemaining();
   if (initialTime.released) {
     console.log('[App] GTA VI is already released! 🎮');
-    triggerReleaseCinematic();
+    triggerReleaseCinematic(true);
   } else {
     /* Start the requestAnimationFrame tick loop */
     startTick();
