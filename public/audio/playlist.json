@@ -59,6 +59,26 @@
       "title": "Zero Hour",
       "file": "/audio/aac/Zero Hour.m4a",
       "duration": 176.757
+    },
+    {
+      "title": "Analog Tides",
+      "file": "/audio/aac/Analog Tides.m4a",
+      "duration": 176.821
+    },
+    {
+      "title": "Chrome Horizon",
+      "file": "/audio/aac/Chrome Horizon.m4a",
+      "duration": 172.267
+    },
+    {
+      "title": "Indigo Drift",
+      "file": "/audio/aac/Indigo Drift.m4a",
+      "duration": 177.408
+    },
+    {
+      "title": "Titan Pulse",
+      "file": "/audio/aac/Titan Pulse.m4a",
+      "duration": 176.875
     }
   ],
   "countdown": {
