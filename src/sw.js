@@ -20,7 +20,7 @@
 
 /* ─── Cache Configuration ─── */
 
-const CACHE_VERSION = 'gtavi-v4';
+const CACHE_VERSION = 'gtavi-v5';
 
 /**
  * Assets to pre-cache during installation.
