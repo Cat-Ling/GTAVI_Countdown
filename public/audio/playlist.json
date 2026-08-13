@@ -1,84 +1,79 @@
 {
   "playlist": [
     {
-      "title": "Vice City I",
-      "file": "/audio/aac/Vice_City_1.m4a",
-      "duration": 174.976
+      "title": "01",
+      "file": "/audio/aac/01.m4a",
+      "duration": 175.040
     },
     {
-      "title": "Miami Pulse",
-      "file": "/audio/aac/Miami Pulse.m4a",
-      "duration": 173.664
-    },
-    {
-      "title": "Chrome Vector",
-      "file": "/audio/aac/Chrome Vector.m4a",
-      "duration": 166.293
-    },
-    {
-      "title": "Gulf Breeze",
-      "file": "/audio/aac/Gulf Breeze.m4a",
-      "duration": 179.029
-    },
-    {
-      "title": "Analog Horizon",
-      "file": "/audio/aac/Analog Horizon.m4a",
-      "duration": 175.04
-    },
-    {
-      "title": "Dark Vista",
-      "file": "/audio/aac/Dark Vista.m4a",
-      "duration": 165.792
-    },
-    {
-      "title": "Palm Coast",
-      "file": "/audio/aac/Palm Coast.m4a",
-      "duration": 181.312
-    },
-    {
-      "title": "Undercover",
-      "file": "/audio/aac/Undercover.m4a",
-      "duration": 171.701
-    },
-    {
-      "title": "Vice City II",
-      "file": "/audio/aac/Vice_City_2.m4a",
-      "duration": 176.853
-    },
-    {
-      "title": "Deep Resonance",
-      "file": "/audio/aac/Deep Resonance.m4a",
-      "duration": 168.224
-    },
-    {
-      "title": "Distant Horizon",
-      "file": "/audio/aac/Distant Horizon.m4a",
-      "duration": 154.24
-    },
-    {
-      "title": "Zero Hour",
-      "file": "/audio/aac/Zero Hour.m4a",
-      "duration": 176.757
-    },
-    {
-      "title": "Analog Tides",
-      "file": "/audio/aac/Analog Tides.m4a",
+      "title": "02",
+      "file": "/audio/aac/02.m4a",
       "duration": 176.821
     },
     {
-      "title": "Chrome Horizon",
-      "file": "/audio/aac/Chrome Horizon.m4a",
+      "title": "03",
+      "file": "/audio/aac/03.m4a",
       "duration": 172.267
     },
     {
-      "title": "Indigo Drift",
-      "file": "/audio/aac/Indigo Drift.m4a",
+      "title": "04",
+      "file": "/audio/aac/04.m4a",
+      "duration": 166.293
+    },
+    {
+      "title": "05",
+      "file": "/audio/aac/05.m4a",
+      "duration": 165.792
+    },
+    {
+      "title": "06",
+      "file": "/audio/aac/06.m4a",
+      "duration": 168.224
+    },
+    {
+      "title": "07",
+      "file": "/audio/aac/07.m4a",
+      "duration": 154.240
+    },
+    {
+      "title": "08",
+      "file": "/audio/aac/08.m4a",
+      "duration": 179.029
+    },
+    {
+      "title": "09",
+      "file": "/audio/aac/09.m4a",
       "duration": 177.408
     },
     {
-      "title": "Titan Pulse",
-      "file": "/audio/aac/Titan Pulse.m4a",
+      "title": "10",
+      "file": "/audio/aac/10.m4a",
+      "duration": 181.312
+    },
+    {
+      "title": "11",
+      "file": "/audio/aac/11.m4a",
       "duration": 176.875
+    },
+    {
+      "title": "12",
+      "file": "/audio/aac/12.m4a",
+      "duration": 171.701
+    },
+    {
+      "title": "13",
+      "file": "/audio/aac/13.m4a",
+      "duration": 174.976
+    },
+    {
+      "title": "14",
+      "file": "/audio/aac/14.m4a",
+      "duration": 176.853
+    },
+    {
+      "title": "15",
+      "file": "/audio/aac/15.m4a",
+      "duration": 176.757
     }
   ],
   "countdown": {
@@ -86,8 +81,8 @@
     "tock": "/audio/countdown/tock.m4a"
   },
   "finalCountdown": {
-    "title": "Ocean Pulse",
-    "file": "/audio/final_minutes/Ocean Pulse.m4a",
+    "title": "final",
+    "file": "/audio/final_minutes/final.m4a",
     "duration": 176.202
   }
 }

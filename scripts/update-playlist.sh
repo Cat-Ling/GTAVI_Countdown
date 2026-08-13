@@ -27,6 +27,19 @@ if ! command -v ffprobe &> /dev/null; then
     exit 1
 fi
 
+echo "Cleaning up missing audio files from playlist..."
+
+# Read current playlist files into an array
+mapfile -t CURRENT_FILES < <(jq -r '.playlist[].file' "$PLAYLIST_FILE")
+
+for filepath in "${CURRENT_FILES[@]}"; do
+    # Check if the file exists (filepath starts with /audio/, so we prepend public)
+    if [ ! -f "public$filepath" ]; then
+        echo "🗑️ Removing missing track: $filepath"
+        jq --arg filepath "$filepath" '.playlist |= map(select(.file != $filepath))' "$PLAYLIST_FILE" > "${PLAYLIST_FILE}.tmp" && mv "${PLAYLIST_FILE}.tmp" "$PLAYLIST_FILE"
+    fi
+done
+
 echo "Scanning $AUDIO_DIR for new audio files..."
 
 # Find all audio files in the folder (m4a, mp3, aac, flac, wav)
