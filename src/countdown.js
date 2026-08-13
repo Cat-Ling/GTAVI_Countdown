@@ -23,7 +23,7 @@ const MS_PER_MINUTE = MS_PER_SECOND * 60;
 const MS_PER_HOUR   = MS_PER_MINUTE * 60;
 const MS_PER_DAY    = MS_PER_HOUR * 24;
 
-export let currentTargetMode = 'UK'; // Default to UK
+export let currentTargetMode = 'local'; // Default to local
 
 let RELEASE_DATE;
 
@@ -39,7 +39,7 @@ export function setTimezone(mode) {
 }
 
 // Initialize
-setTimezone('UK');
+setTimezone('local');
 
 export function checkReleaseStates() {
   const now = new Date();

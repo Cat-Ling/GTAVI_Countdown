@@ -78,7 +78,7 @@ function setupTimezoneToggle() {
   const btn = document.getElementById('timezone-toggle');
   if (!btn) return;
   
-  const savedMode = localStorage.getItem('gtavi_timezone_mode') || 'UK';
+  const savedMode = localStorage.getItem('gtavi_timezone_mode') || 'local';
   if (savedMode !== currentTargetMode) {
     setTimezone(savedMode);
   }
