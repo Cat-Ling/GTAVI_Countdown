@@ -234,7 +234,15 @@
   }
 
   .release-info {
-    display: none;
+    margin-top: clamp(0.5rem, 1vh, 1.5rem);
+  }
+
+  .release-info__date {
+    font-size: clamp(0.6rem, 2vh, 0.9rem);
+  }
+
+  .release-info__note {
+    font-size: clamp(0.5rem, 1.5vh, 0.7rem);
   }
 }
 
