@@ -205,6 +205,11 @@ function setupVisibilityHandler() {
         /* Only resume the tick loop if we are still counting down */
         resetTickPhase();
         startTick();
+      } else {
+        /* If released while tab was in background, transition instantly */
+        console.log('[App] GTA VI has been released! 🎮');
+        checkFallback();
+        triggerReleaseCinematic(true);
       }
     }
   });
